@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ArWeb 2.0</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<style>
+		.codigo{
+		  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+		  margin-bottom: 10px;
+		  overflow: auto;
+		  width: auto;
+		  padding: 5px;
+		  background-color: #eee;
+		  width: 650px!ie7;
+		  padding-bottom: 20px!ie7;
+		  max-height: 600px;
+		}
+		.loader {
+		    font-family: Arial;
+		    font-size: 10pt;
+		    top: 0;
+		    left: 0;
+		    padding-top: 215px;
+		    opacity: 0.7;
+		    filter: alpha(opacity=70);
+		    -moz-opacity: 0.7;
+		    width: 100%;
+		    min-height: 100%;
+		    display: none;
+		    position: fixed;
+		    background: #fff;
+		    text-align: center;
+		    z-index: 11001;
+		}
+		
+		    .loader img {
+		        width: 10%;
+		    }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h3>Evaluación de la Accesibilidad Web</h3>
+		<div id="divValidacion">
+			<div class="panel panel-primary">
+		      	<div class="panel-heading">Principios a Verificar</div>
+		      	<div class="panel-body">
+		      		<div class="checkbox">
+		      			<label><input type="checkbox" name="principios" value="1" checked>1. Perceptibilidad</label>
+		      		</div>
+		      		<div class="checkbox">
+		  				<label><input type="checkbox" name="principios" value="2" checked>2. Operabilidad</label>
+		  			</div>
+		  			<div class="checkbox">
+		  				<label><input type="checkbox" name="principios" value="3" checked>3. Comprensiblidad</label>
+		  			</div>
+		  			<div class="checkbox">
+		  				<label><input type="checkbox" name="principios" value="4" checked>4. Robustez</label>
+		  			</div>
+		      	</div>
+		      </div>
+			  <ul id="tabs" class="nav nav-tabs">
+			    <li class="active"><a data-toggle="tab" href="#PaginaWeb">Página Web</a></li>
+			    <li><a data-toggle="tab" href="#Archivo">Archivo</a></li>
+			    <li><a data-toggle="tab" href="#Codigo">Código</a></li>
+			    <li><a data-toggle="tab" href="#URLs">URLs</a></li>
+			  </ul>
+			  <div class="tab-content">
+			  	<div id="PaginaWeb" class="tab-pane fade in active">
+			  		<br />
+		    		<div id="divTxtUrlValidar" class="form-group">
+		    			<label class="control-label" for="txtUrlValidar">Indique la URL de la Página Web:</label>
+		    			<input type="text" id="txtUrlValidar" class="form-control" value="http://">
+		    		</div>
+		    		<div class="text-center">
+			  			<button type="button" class="btn btn-primary" onclick="return validarUrl();">Validar</button>
+			  		</div>
+		  		</div>
+		  		<div id="Archivo" class="tab-pane fade">
+		  			<br />
+		  			<div id="divArchivoFileUpload" class="form-group">
+		   				<label class="control-label" for="archivoFileUpload">Suba un archivo local:</label>
+		    			<input type="file" class="form-control-file" id="archivoFileUpload" accept=".html">
+		    		</div>	
+		    		<div class="text-center">
+			  			<button type="button" class="btn btn-primary" onclick="return validarArchivo();">Validar</button>
+			  		</div>
+		  		</div>
+		  		<div id="Codigo" class="tab-pane fade">
+		  			<br />
+		   			<div id="divTxtCodigoHTML" class="form-group">
+		   				<label class="control-label" for="txtCodigoHTML">Copie y pegue el código HTML:</label>
+		    			<textarea class="form-control" rows="8" id="txtCodigoHTML"></textarea>
+		    		</div>
+		    		<div class="text-center">
+			  			<button type="button" class="btn btn-primary" onclick="return validarHTML();">Validar</button>
+			  		</div>
+		  		</div>
+		  		<div id="URLs" class="tab-pane fade">
+		  			<br />
+		   			<div id="divCmbURLs" class="form-group">
+		   				<label class="control-label" for="cmbURLs">Seleccione una URL:</label>
+		    			<select class="form-control" id="cmbURLs">
+		  				</select>
+		  			</div>
+		  			<div class="text-center">
+			  			<button type="button" class="btn btn-primary" onclick="return validarByUrl();">Validar</button>
+			  		</div>
+		  		</div>
+		  		<br />
+		  		<div id="divError" class="alert alert-danger collapse">
+				</div>
+			</div>
+			<br />
+		  	<div class="panel panel-info">
+		  		<div class="panel-heading">¿Qué es ARWeb?</div>
+		  		<div class="panel-body">
+		  			<p>Es una aplicación para la verificación automática de las Pautas de Accesibilidad en Contenidos Web establecidas por el W3C en la guía WCAG versión 2.0. </p>
+		  		</div>	
+		  	</div>
+		</div>
+		<div id="divResultado" style="display: none;">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+			  			<div class="panel-heading">Información de Análisos de Accesivilidad Web</div>
+			  			<div class="panel-body">
+			  				<div class="row">
+								<div class="col-sm-6">
+									<b>Recurso (Página Web):</b>
+								</div>
+								<div id="divRecurso" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<b>Fecha/Hora:</b>
+								</div>
+								<div id="divFechaHora" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<b>Pautas Aplicadas:</b>
+								</div>
+								<div class="col-sm-6">
+									WCAG 2.0
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<b>Principios:</b>
+								</div>
+								<div id="divPrincipios" class="col-sm-6">
+								
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<b>Nivel Accesibilidad:</b>
+								</div>
+								<div class="col-sm-6">
+									A (umbral: 50 puntos)
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<b>Tecnologías Verificadas:</b>
+								</div>
+								<div class="col-sm-6">
+									HTML, CSS y JavaScript
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<img src="images/error.png" alt="Imagen problemas"><b>Cantidad Problemas:</b>
+								</div>
+								<div id="divCantProblemas" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<img src="images/manual.png" alt="Imagen advertencias"><b>Cantidad Advertencias:</b>
+								</div>
+								<div id="divCantAdvertencias" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<img src="images/imposible.png" alt="Imagen no verificados"><b>Cantidad No Verificados:</b>
+								</div>
+								<div id="divCantNoVerificados" class="col-sm-6">
+								</div>
+							</div>
+							<div class="text-center">
+								<b>Puntos: </b><span id="spanPuntos"></span>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="dropdown">
+									  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+									    <span class="glyphicon glyphicon-download-alt"></span> Exportar <span class="caret"></span>
+									  </button>
+									  <ul class="dropdown-menu">
+									    <li><a href="javascript:exportar('ANEXO_PDF','.pdf','Detalle');"><span class="glyphicon glyphicon-list"></span> Anexo PDF</a></li>
+									    <li><a href="javascript:exportar('DETALLE_PDF','.pdf','Detalle');"><span class="glyphicon glyphicon-list"></span> Detalle PDF</a></li>
+									    <li><a href="javascript:exportar('DETALLE_XLS','.xls','Detalle');"><span class="glyphicon glyphicon-list-alt"></span> Detalle XLS</a></li>
+									  </ul>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<button type="button" class="btn btn-primary" style="float: right;" onclick="verCodigoHTML();">
+    									<span class="glyphicon glyphicon-search"></span> Ver Código HTML
+  									</button>
+								</div>
+							</div>
+			  			</div>	
+			  		</div>
+		  		</div>
+		  		<div class="col-sm-6">
+			  		<div class="panel panel-default">
+			  			<div class="panel-heading">Histórico de Verificación del Recurso</div>
+			  			<div class="panel-body">
+				  			<div class="row">
+								<div class="col-sm-6">
+									<b>Recurso (Página Web):</b>
+								</div>
+								<div id="divRecursoHistorico" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<b>Fecha/Hora:</b>
+								</div>
+								<div id="divFechaHoraHistorico" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<b>Pautas Aplicadas:</b>
+								</div>
+								<div id="divPautasHistorico" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<b>Principios:</b>
+								</div>
+								<div id="divPrincipiosHistorico" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<b>Nivel Accesibilidad:</b>
+								</div>
+								<div id="divNivelAccesibilidadHistorico" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<b>Tecnologías Verificadas:</b>
+								</div>
+								<div id="divTecnologiasHistorico" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<img src="images/error.png" alt="Imagen problemas"><b>Cantidad Problemas:</b>
+								</div>
+								<div id="divCantProblemasHistorico" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<img src="images/manual.png" alt="Imagen advertencias"><b>Cantidad Advertencias:</b>
+								</div>
+								<div id="divCantAdvertenciasHistorico" class="col-sm-6">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<img src="images/imposible.png" alt="Imagen no verificados"><b>Cantidad No Verificados:</b>
+								</div>
+								<div id="divCantNoVerificadosHistorico" class="col-sm-6">
+								</div>
+							</div>
+							<div class="text-center">
+								<b>Puntos: </b><span id="spanPuntosHistorico"></span>
+							</div>
+							<div id="divBotonesHistorico" class="row">
+								<div class="col-sm-6">
+									<div class="dropdown">
+									  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+									    <span class="glyphicon glyphicon-download-alt"></span> Exportar <span class="caret"></span>
+									  </button>
+									  <ul class="dropdown-menu">
+									    <li><a href="javascript:exportar('ANEXO_PDF','.pdf','Historico');"><span class="glyphicon glyphicon-list"></span> Anexo PDF</a></li>
+									    <li><a href="javascript:exportar('DETALLE_PDF','.pdf','Historico');"><span class="glyphicon glyphicon-list"></span> Detalle PDF</a></li>
+									    <li><a href="javascript:exportar('DETALLE_XLS','.xls','Historico');"><span class="glyphicon glyphicon-list-alt"></span> Detalle XLS</a></li>
+									  </ul>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<!--<button type="button" class="btn btn-primary" onclick="verCodigoHTML();">
+    									<span class="glyphicon glyphicon-search"></span> Código HTML
+  									</button>-->
+								</div>
+							</div>
+				  		</div>	
+				  	</div>
+		  		</div>
+	  		</div>
+	  		<div class="row">
+	  			<div class="col-sm-12">
+					<div class="panel panel-primary">
+				  		<div class="panel-heading">Resultados Generales</div>
+				  		<div class="panel-body" style="max-height: 400px; overflow-y: scroll;">
+				  			<table class="table table-striped table-hover">
+							  <thead class="thead-light">
+							    <tr>
+							      <th scope="col">Ppios.</th>
+							      <th scope="col">Pautas</th>
+							      <th scope="col">Criterios</th>
+							      <th scope="col">Puntos A</th>
+							      <th scope="col">Técnicas</th>
+							      <th scope="col">Tipologías</th>
+							      <th scope="col">Verificaciones</th>
+							      <th scope="col">Rdo.</th>
+							      <th scope="col">Inc.</th>
+							      <th scope="col"># Líneas</th>
+							    </tr>
+							  </thead>
+							  <tbody id="tableResultado">
+							  </tbody>
+							</table>
+				  		</div>
+				  	</div>
+				</div>			
+			</div>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="divDetalleElemento" tabindex="-1" role="dialog" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header" style="background-color: #337ab7; color: white;">
+			        <h4 class="modal-title" id="tituloDetalleElemento">Modal title</h4>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body" style="font-weight:normal;">
+			      	<div class="form-group">
+			      		<label class="control-label" for="nombreDetalleElemento" style="font-weight: bold;">Nombre:</label>
+		    			<label id="nombreDetalleElemento"></label>
+		    		</div>
+			        <div class="form-group">
+			        	<label class="control-label" for="descripcionDetalleElemento" style="font-weight: bold;">Descripción:</label>
+			        	<label id="descripcionDetalleElemento"></label>
+			        </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<!-- Modal Verificaciones -->
+			<div class="modal fade" id="divDetalleVerificacion" tabindex="-1" role="dialog" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header" style="background-color: #337ab7; color: white;">
+			        <h4 class="modal-title">Verificación</h4>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body" style="font-weight:normal;">
+			      	<div class="form-group">
+			      		<label class="control-label" for="nombreDetalleVerificacion" style="font-weight: bold;">Nombre:</label>
+		    			<label id="nombreDetalleVerificacion"></label>
+		    		</div>
+		    		<div class="form-group">
+			      		<img alt= "Descripción" src="images/verificacion.png"><label class="control-label" for="descripcionDetalleVerificacion" style="font-weight: bold;">Descripción:</label>
+		    			<label id="descripcionDetalleVerificacion"></label>
+		    		</div>
+			        <div class="form-group">
+			        	<img alt= "Recomendación" src="images/recomendacion.png"><label class="control-label" for="recomendacionDetalleVerificacion" style="font-weight: bold;">Recomendación:</label>
+			        	<label id="recomendacionDetalleVerificacion"></label>
+			        </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<!-- Modal Codigo HTML -->
+			<div class="modal fade" id="divCodigoHTML" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header" style="background-color: #337ab7; color: white;">
+				        <h4 class="modal-title">Código HTML</h4>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body" style="font-weight:normal;">
+				      	<div id="textCodigoHTML" class="codigo">
+				      	</div>	
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+				      </div>
+				    </div>
+				  </div>
+			 </div>
+		</div>
+  	</div>
+  	<div class="loader">
+        <img src="images/spinner.gif" />
+        <br />
+        <br />
+    	Validando...
+    </div>
+</body>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();   
+	});
+</script>
+</html>
