@@ -7,7 +7,7 @@ import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_4_1_UsoColor;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_4_2_ControlAudio;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_4_3_ContrasteMinimo;
-import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_4_4_VariarElTamañoDelTexto;
+import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_4_4_VariarElTamanioDelTexto;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_4_5_ImagenesDeTexto;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_4_6_ContrasteMejorado;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_4_7_SonidosDeFondoDeAudioBajoOInexistente;
@@ -28,7 +28,7 @@ public class Pauta1_4_Distinguible extends Pauta {
 		listaCriterios.add(new Criterio1_4_1_UsoColor());
 		listaCriterios.add(new Criterio1_4_2_ControlAudio());
 		listaCriterios.add(new Criterio1_4_3_ContrasteMinimo());
-		listaCriterios.add(new Criterio1_4_4_VariarElTamañoDelTexto());
+		listaCriterios.add(new Criterio1_4_4_VariarElTamanioDelTexto());
 		listaCriterios.add(new Criterio1_4_5_ImagenesDeTexto());
 		listaCriterios.add(new Criterio1_4_6_ContrasteMejorado());
 		listaCriterios.add(new Criterio1_4_7_SonidosDeFondoDeAudioBajoOInexistente());

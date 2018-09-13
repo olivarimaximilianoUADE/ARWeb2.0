@@ -9,7 +9,7 @@ import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_2_2_SubtitulosPreg
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_2_3_AudiodescripcionOAlternativaMultimediaPregrabada;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_2_4_SubtitulosEnDirecto;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_2_5_AudiodescripcionPregrabada;
-import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_2_6_LeguaDeSeñasPregrabada;
+import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_2_6_LeguaDeSeniasPregrabada;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_2_7_AudiodescripcionExtendidaPregrabada;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_2_8_AlternativasMultimediaPregrabada;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio1_2_9_SoloAudioEnDirecto;
@@ -30,7 +30,7 @@ public class Pauta1_2_ContenidoMultimediaDependienteDelTiempo extends Pauta {
 		listaCriterios.add(new Criterio1_2_3_AudiodescripcionOAlternativaMultimediaPregrabada());
 		listaCriterios.add(new Criterio1_2_4_SubtitulosEnDirecto());
 		listaCriterios.add(new Criterio1_2_5_AudiodescripcionPregrabada());
-		listaCriterios.add(new Criterio1_2_6_LeguaDeSeñasPregrabada());
+		listaCriterios.add(new Criterio1_2_6_LeguaDeSeniasPregrabada());
 		listaCriterios.add(new Criterio1_2_7_AudiodescripcionExtendidaPregrabada());
 		listaCriterios.add(new Criterio1_2_8_AlternativasMultimediaPregrabada());
 		listaCriterios.add(new Criterio1_2_9_SoloAudioEnDirecto());

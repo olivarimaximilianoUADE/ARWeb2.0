@@ -7,9 +7,9 @@ import ar.edu.uade.tic.tesis.arweb.modelo.tecnica.CategoriaTecnica;
 import ar.edu.uade.tic.tesis.arweb.modelo.tecnica.Tecnica;
 import ar.edu.uade.tic.tesis.arweb.modelo.tecnicas.generales.TecnicaG54;
 
-public class Criterio1_2_6_LeguaDeSeñasPregrabada extends Criterio {
+public class Criterio1_2_6_LeguaDeSeniasPregrabada extends Criterio {
 
-	public Criterio1_2_6_LeguaDeSeñasPregrabada() {
+	public Criterio1_2_6_LeguaDeSeniasPregrabada() {
 		super(
 				"1.2.6",
 				"Lengua de Señas (pregrabada)",

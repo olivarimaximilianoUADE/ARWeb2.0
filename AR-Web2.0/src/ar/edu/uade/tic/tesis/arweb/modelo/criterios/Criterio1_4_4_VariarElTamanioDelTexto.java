@@ -18,9 +18,9 @@ import ar.edu.uade.tic.tesis.arweb.modelo.tecnicas.css.TecnicaC20;
 import ar.edu.uade.tic.tesis.arweb.modelo.tecnicas.css.TecnicaC22;
 import ar.edu.uade.tic.tesis.arweb.modelo.tecnicas.script.TecnicaSCR34;
 
-public class Criterio1_4_4_VariarElTamañoDelTexto extends Criterio {
+public class Criterio1_4_4_VariarElTamanioDelTexto extends Criterio {
 
-public Criterio1_4_4_VariarElTamañoDelTexto() {
+public Criterio1_4_4_VariarElTamanioDelTexto() {
 	super(
 			"1.4.4",
 			"Variar el tamaño del texto.",
