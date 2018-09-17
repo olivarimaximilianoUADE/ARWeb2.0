@@ -1,5 +1,7 @@
 package ar.edu.uade.tic.tesis.arweb.db;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -32,7 +34,10 @@ public class AnalisisDAO extends Analisis implements DAO {
 		AnalisisDAO.advertenciasSQL = AnalisisDAO.prefSQL + "Advertencias";
 		AnalisisDAO.noVerificadosSQL = AnalisisDAO.prefSQL + "NoVerificados";
 		AnalisisDAO.accesibilidadSQL = AnalisisDAO.prefSQL + "Accesibilidad";
-		AnalisisDAO.camposSQL = AnalisisDAO.idSQL + " , " + AnalisisDAO.urlSQL + " , " + AnalisisDAO.fechaSQL + " , " + AnalisisDAO.principiosSQL + " , " + AnalisisDAO.nivelSQL + " , " + AnalisisDAO.umbralSQL + " , " + AnalisisDAO.problemasSQL + " , " + AnalisisDAO.advertenciasSQL + " , " + AnalisisDAO.noVerificadosSQL + " , " + AnalisisDAO.accesibilidadSQL;
+		AnalisisDAO.camposSQL = AnalisisDAO.idSQL + " , " + AnalisisDAO.urlSQL + " , " + AnalisisDAO.fechaSQL + " , "
+				+ AnalisisDAO.principiosSQL + " , " + AnalisisDAO.nivelSQL + " , " + AnalisisDAO.umbralSQL + " , "
+				+ AnalisisDAO.problemasSQL + " , " + AnalisisDAO.advertenciasSQL + " , " + AnalisisDAO.noVerificadosSQL
+				+ " , " + AnalisisDAO.accesibilidadSQL;
 	}
 
 	public AnalisisDAO() {
@@ -45,10 +50,11 @@ public class AnalisisDAO extends Analisis implements DAO {
 		this.registrar();
 	}
 
-	public AnalisisDAO(String url, String principios, String nivelAccesibilidad, Integer umbral, Integer problemas, Integer advertencias, Integer noVerificados, Integer accesibilidad) {
+	public AnalisisDAO(String url, String principios, String nivelAccesibilidad, Integer umbral, Integer problemas,
+			Integer advertencias, Integer noVerificados, Integer accesibilidad) {
 		super(0L, url, principios, nivelAccesibilidad, umbral, problemas, advertencias, noVerificados, accesibilidad);
 		this.registrar();
-	}	
+	}
 
 	private void completarObjetoAnalisis(Analisis analisis, ResultSet resultSet) throws Exception {
 		analisis.setId(resultSet.getLong(1));
@@ -64,7 +70,7 @@ public class AnalisisDAO extends Analisis implements DAO {
 	}
 
 	public void select() throws Exception {
-		DbConn db = new DbConn();
+		DbConnMySql db = new DbConnMySql();
 		try {
 			db.selectObjeto(AnalisisDAO.urlSQL + " = '" + this.getUrl() + "'", AnalisisDAO.idSQL, this);
 		} finally {
@@ -91,73 +97,76 @@ public class AnalisisDAO extends Analisis implements DAO {
 	}
 
 	public void insertHistorico() throws Exception {
-		DbConn db = new DbConn();
+		DbConnMySql db = new DbConnMySql();
 		try {
-			this.setId(Long.parseLong(db.Insert(
-					this.listaTabla(),
-					this.listaCampos().substring(this.listaCampos().indexOf(',') + 1),
-					"@ID@" + " '" + this.getUrl() + "' , '" + this.getFechaHora() + "' , '" + this.getPrincipios() + "' , '" + this.getNivelAccesibilidad() + "' , " + 
-							this.getUmbral() + " , " + this.getProblemas() + " , " + this.getAdvertencias() + " , " + this.getNoVerificados() + " , " + this.getAccesibilidad())));
+			this.setId(Long.parseLong(
+					db.Insert(this.listaTabla(), this.listaCampos().substring(this.listaCampos().indexOf(',') + 1),
+							"'" + this.getUrl() + "' , '" + this.getFechaHora() + "' , '"
+									+ this.getPrincipios() + "' , '" + this.getNivelAccesibilidad() + "' , "
+									+ this.getUmbral() + " , " + this.getProblemas() + " , " + this.getAdvertencias()
+									+ " , " + this.getNoVerificados() + " , " + this.getAccesibilidad())));
 			db.commit();
+		} catch (Exception e) {
+			saveError(e);
 		} finally {
 			db.closeConnection();
 		}
 	}
-	
-	public void insertAnexo(String tabla, String base64, Long analisisId) throws Exception {
-		DbConn db = new DbConn();
+
+	private static void saveError(Exception e) {
 		try {
-			String q = "INSERT INTO " + tabla +" (Analisis_Id, Base64) VALUES (?, ?)";
+			FileWriter fos = new FileWriter("exception.txt", true);
+			PrintWriter ps = new PrintWriter(fos);
+			ps.print(e.getMessage());
+			e.printStackTrace(ps);
+		} catch (Exception ex) {
+		}
+	}
+
+	public void insertAnexo(String tabla, String base64, Long analisisId) throws Exception {
+		DbConnMySql db = new DbConnMySql();
+		try {
+			String q = "INSERT INTO " + tabla + " (Analisis_Id, Base64) VALUES (?, ?)";
 			PreparedStatement st = db.openStatement(q);
 			st.setString(1, analisisId.toString());
 			st.setString(2, base64);
 			st.executeUpdate();
-		
-			/*db.Insert(
-					tabla,
-					"Analisis_Id, Base64",
-					analisisId + ", '" + base64 + "'");*/
+
 			db.commit();
-		}
-		finally {
+		}catch (Exception e) {
+			throw e;
+		} finally {
 			db.closeConnection();
 		}
 	}
-	public void insertarResultadoCriterioTecnica(Long analisisId, String criterioNumero, String nivel, String tecnicaNumero, String resultado) throws Exception {
-		DbConn db = new DbConn();
+
+	public void insertarResultadoCriterioTecnica(String script) throws Exception {
+		DbConnMySql db = new DbConnMySql();
 		try {
-			String q = "INSERT INTO RESULTADO_CRITERIO_TECNICA (Analisis_Id, Criterio_Numero, Nivel, Tecnica_Numero, Resultado) VALUES (?, ?, ?, ?, ?)";
-			PreparedStatement st = db.openStatement(q);
-			st.setString(1, analisisId.toString());
-			st.setString(2, criterioNumero);
-			st.setString(3, nivel);
-			st.setString(4, tecnicaNumero);
-			st.setString(5, resultado);
+			PreparedStatement st = db.openStatement(script);
 			st.executeUpdate();
-		
-			/*db.Insert(
-					tabla,
-					"Analisis_Id, Base64",
-					analisisId + ", '" + base64 + "'");*/
+
 			db.commit();
+		}catch (Exception e) {
+			throw e;
 		}
 		finally {
 			db.closeConnection();
 		}
 	}
+
 	public String selectAnexo(String tabla, Long analisisId) throws Exception {
-		DbConn db = new DbConn();
+		DbConnMySql db = new DbConnMySql();
 		String base64 = "";
 		try {
-			String q = "SELECT Base64 FROM " + tabla +" WHERE Analisis_Id = " + analisisId.toString();
+			String q = "SELECT Base64 FROM " + tabla + " WHERE Analisis_Id = " + analisisId.toString();
 			ResultSet rs = db.openCursor(q);
-			//db.commit();
+
 			if (rs.next())
 				base64 = rs.getString("Base64");
 			db.closeCursor();
 			return base64;
-		}
-		finally {
+		} finally {
 			db.closeConnection();
 		}
 	}

@@ -341,7 +341,6 @@ public class ValidarAccesibilidadService{
 								resultado.setPrincipioNumero(resultadoEvaluacionPrincipio.getPrincipio().getNumero());
 								resultado.setPrincipioNombre(resultadoEvaluacionPrincipio.getPrincipio().getNombre());
 								resultado.setPrincipioDescripcion(resultadoEvaluacionPrincipio.getPrincipio().getDescripcion());
-								//resultado.setPrincipioName(resultadoEvaluacionPrincipio.getPrincipio().getPackageClassName());
 							}
 							else
 								resultado.setPrincipio("");
@@ -350,7 +349,6 @@ public class ValidarAccesibilidadService{
 								resultado.setPautaNumero(resultadoEvaluacionPauta.getPauta().getNumero());
 								resultado.setPautaNombre(resultadoEvaluacionPauta.getPauta().getNombre());
 								resultado.setPautaDescripcion(resultadoEvaluacionPauta.getPauta().getDescripcion());
-								//resultado.setPautaName(resultadoEvaluacionPauta.getPauta().getPackageClassName());
 							}
 							else
 								resultado.setPauta("");
@@ -361,7 +359,6 @@ public class ValidarAccesibilidadService{
 								resultado.setCriterioNombre(resultadoEvaluacionCriterio.getCriterio().getNombre());
 								resultado.setCriterioDescripcion(resultadoEvaluacionCriterio.getCriterio().getDescripcion());
 								resultado.setNivelAccesibilidad(resultadoEvaluacionCriterio.getCriterio().getNivelAccesibilidad().getRepresentacion());
-								//resultado.setCriterioName(resultadoEvaluacionCriterio.getCriterio().getPackageClassName());
 							}
 							else {
 								resultado.setCriterio("");
@@ -372,7 +369,6 @@ public class ValidarAccesibilidadService{
 								resultado.setTecnicaNumero(resultadoEvaluacionTecnica.getTecnica().getNumero());
 								resultado.setTecnicaNombre(resultadoEvaluacionTecnica.getTecnica().getNombre());
 								resultado.setTecnicaDescripcion(resultadoEvaluacionTecnica.getTecnica().getDescripcion());
-								//resultado.setTecnicaName(resultadoEvaluacionTecnica.getTecnica().getPackageClassName());
 							}
 							else
 								resultado.setTecnica("");
@@ -467,7 +463,7 @@ public class ValidarAccesibilidadService{
 				resul.getDetalle().getCantNoVerificados(), resul.getDetalle().getPuntos()));
 		
 		//Guardo el detalle del analisis
-		String criterio= "", nivel = "", tecnica = "";
+		String criterio= "", nivel = "", tecnica = "", script = "";
 		for (ResultadoEvaluacion resultado : resultados) {
 			if(resultado.getCriterioNumero() != null)
 				criterio = resultado.getCriterioNumero();
@@ -475,13 +471,13 @@ public class ValidarAccesibilidadService{
 				nivel = resultado.getNivelAccesibilidad();
 			if(resultado.getTecnicaNumero() != null)
 				tecnica = resultado.getTecnicaNumero();
-			GestorBaseDatos.insertarResultadoCriterioTecnica(tipoValidacion,
-					resul.getAnalisisId(),
-					criterio,
-					nivel,
-					tecnica,
-					resultado.getResultado().substring(0, resultado.getResultado().indexOf(".")));
+			if(script == "")
+				script = "INSERT INTO RESULTADO_CRITERIO_TECNICA (Analisis_Id, Criterio_Numero, Nivel, Tecnica_Numero, Resultado) VALUES (" + resul.getAnalisisId() + ",'" + criterio + "','" + nivel + "','" + tecnica + "','" + resultado.getResultado().substring(0, resultado.getResultado().indexOf(".")) + "')";
+			else
+				script +=  ",(" + resul.getAnalisisId() + ",'" + criterio + "','" + nivel + "','" + tecnica + "','" + resultado.getResultado().substring(0, resultado.getResultado().indexOf(".")) + "')";
 		}
+		script +=  ";";
+		GestorBaseDatos.insertarResultadoCriterioTecnica(tipoValidacion, script);
 		
 		//Genero Anexo PDF
 		try {
@@ -496,7 +492,6 @@ public class ValidarAccesibilidadService{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		
 		//Genero Detalle PDF
 		try {

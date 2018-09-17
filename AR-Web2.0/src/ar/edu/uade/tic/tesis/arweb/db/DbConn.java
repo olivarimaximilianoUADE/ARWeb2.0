@@ -28,6 +28,7 @@ public class DbConn {
 			//Properties properties = new Properties();
 			//properties.load(ValidarAccesibilidadService.class.getResourceAsStream("/ar/edu/uade/tic/tesis/arweb/configuracion/Config.properties"));
 			//connection=DriverManager.getConnection("jdbc:ucanaccess:/" + this.getPathAbsoluto(properties.get("URL_DATA_BASE").toString()));//"/ar/edu/uade/tic/tesis/arweb/db/ARWeb.mdb"));//Constantes.URL_DATA_BASE));
+			
 			connection=DriverManager.getConnection("jdbc:ucanaccess:/" + this.getPathAbsoluto("/ar/edu/uade/tic/tesis/arweb/db/ARWeb.mdb"));
 		} 
 		catch (Exception e) {
@@ -314,6 +315,7 @@ public class DbConn {
 		String values;
 		String id = "";
 		boolean auto_id = false;
+		
 		if ((i = pValues.indexOf("@ID@")) >= 0) {
 			auto_id = true;
 			values = pValues.substring(0, i);

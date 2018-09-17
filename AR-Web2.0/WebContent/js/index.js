@@ -1,3 +1,4 @@
+//var urlBase = "http://ec2-34-219-116-80.us-west-2.compute.amazonaws.com:8080/AR-Web2.0/Services/";
 var urlBase = "http://localhost:8080/AR-Web2.0/Services/";
 var data;
 //////////////////////////////////////////////////////////////////////
