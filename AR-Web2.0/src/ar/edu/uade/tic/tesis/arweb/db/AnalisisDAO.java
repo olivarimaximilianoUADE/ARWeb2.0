@@ -1,7 +1,5 @@
 package ar.edu.uade.tic.tesis.arweb.db;
 
-import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -107,19 +105,9 @@ public class AnalisisDAO extends Analisis implements DAO {
 									+ " , " + this.getNoVerificados() + " , " + this.getAccesibilidad())));
 			db.commit();
 		} catch (Exception e) {
-			saveError(e);
+			throw e;
 		} finally {
 			db.closeConnection();
-		}
-	}
-
-	private static void saveError(Exception e) {
-		try {
-			FileWriter fos = new FileWriter("exception.txt", true);
-			PrintWriter ps = new PrintWriter(fos);
-			ps.print(e.getMessage());
-			e.printStackTrace(ps);
-		} catch (Exception ex) {
 		}
 	}
 
@@ -166,7 +154,9 @@ public class AnalisisDAO extends Analisis implements DAO {
 				base64 = rs.getString("Base64");
 			db.closeCursor();
 			return base64;
-		} finally {
+		} catch(Exception e) {
+			throw e;
+		}finally {
 			db.closeConnection();
 		}
 	}

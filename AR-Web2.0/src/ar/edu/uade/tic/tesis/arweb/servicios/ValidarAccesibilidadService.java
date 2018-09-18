@@ -304,7 +304,7 @@ public class ValidarAccesibilidadService{
 		return resp;
 	}
 	
-	private Resultado generarResultado(Parseador parseador, Validacion validacion, Properties properties, TipoValidacion tipoValidacion) {
+	private Resultado generarResultado(Parseador parseador, Validacion validacion, Properties properties, TipoValidacion tipoValidacion) throws Exception {
 		Resultado resul = new Resultado();
 		
 		List<ResultadoEvaluacionPrincipio> resultadoValidacionGeneral = new LinkedList<ResultadoEvaluacionPrincipio>();

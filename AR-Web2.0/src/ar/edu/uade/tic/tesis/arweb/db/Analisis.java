@@ -28,7 +28,7 @@ public class Analisis {
 	public Analisis(Long id, String url, String principios, String nivelAccesibilidad, Integer umbral, Integer problemas, Integer advertencias, Integer noVerificado, Integer accesibilidad) {
 		this.setId(id);
 		this.setUrl(url);
-		this.setFechaHora(new SimpleDateFormat().format(new Date()));
+		this.setFechaHora(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 		this.setPrincipios(principios);
 		this.setNivelAccesibilidad(nivelAccesibilidad);
 		this.setUmbral(umbral);
