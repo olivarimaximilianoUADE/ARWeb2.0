@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
 		.codigo{
 		  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
@@ -205,9 +206,9 @@
 									    <span class="glyphicon glyphicon-download-alt"></span> Exportar <span class="caret"></span>
 									  </button>
 									  <ul class="dropdown-menu">
-									    <li><a href="javascript:exportar('ANEXO_PDF','.pdf','Detalle');"><span class="glyphicon glyphicon-list"></span> Anexo PDF</a></li>
-									    <li><a href="javascript:exportar('DETALLE_PDF','.pdf','Detalle');"><span class="glyphicon glyphicon-list"></span> Detalle PDF</a></li>
-									    <li><a href="javascript:exportar('DETALLE_XLS','.xls','Detalle');"><span class="glyphicon glyphicon-list-alt"></span> Detalle XLS</a></li>
+									    <li><a href="javascript:exportar('ANEXO_PDF','.pdf','Detalle','dropdownMenuButton');"><span class="glyphicon glyphicon-list"></span> Anexo PDF</a></li>
+									    <li><a href="javascript:exportar('DETALLE_PDF','.pdf','Detalle','dropdownMenuButton');"><span class="glyphicon glyphicon-list"></span> Detalle PDF</a></li>
+									    <li><a href="javascript:exportar('DETALLE_XLS','.xls','Detalle','dropdownMenuButton');"><span class="glyphicon glyphicon-list-alt"></span> Detalle XLS</a></li>
 									  </ul>
 									</div>
 								</div>
@@ -293,13 +294,13 @@
 							<div id="divBotonesHistorico" class="row">
 								<div class="col-sm-6">
 									<div class="dropdown">
-									  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+									  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButtonHist" data-toggle="dropdown">
 									    <span class="glyphicon glyphicon-download-alt"></span> Exportar <span class="caret"></span>
 									  </button>
 									  <ul class="dropdown-menu">
-									    <li><a href="javascript:exportar('ANEXO_PDF','.pdf','Historico');"><span class="glyphicon glyphicon-list"></span> Anexo PDF</a></li>
-									    <li><a href="javascript:exportar('DETALLE_PDF','.pdf','Historico');"><span class="glyphicon glyphicon-list"></span> Detalle PDF</a></li>
-									    <li><a href="javascript:exportar('DETALLE_XLS','.xls','Historico');"><span class="glyphicon glyphicon-list-alt"></span> Detalle XLS</a></li>
+									    <li><a href="javascript:exportar('ANEXO_PDF','.pdf','Historico','dropdownMenuButtonHist');"><span class="glyphicon glyphicon-list"></span> Anexo PDF</a></li>
+									    <li><a href="javascript:exportar('DETALLE_PDF','.pdf','Historico','dropdownMenuButtonHist');"><span class="glyphicon glyphicon-list"></span> Detalle PDF</a></li>
+									    <li><a href="javascript:exportar('DETALLE_XLS','.xls','Historico','dropdownMenuButtonHist');"><span class="glyphicon glyphicon-list-alt"></span> Detalle XLS</a></li>
 									  </ul>
 									</div>
 								</div>

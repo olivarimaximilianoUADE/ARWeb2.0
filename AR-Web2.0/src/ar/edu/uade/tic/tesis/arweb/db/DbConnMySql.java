@@ -99,7 +99,7 @@ public class DbConnMySql {
 			connection.commit();
 		} catch (Exception e) {
 			throw e;
-		} 
+		}
 		return rows;
 	}
 
@@ -131,17 +131,20 @@ public class DbConnMySql {
 		}
 		return ret;
 	}
-	
+
 	public void selectObjeto(String condId, String orderby, DAO cb) throws Exception {
-		boolean existe = false;
+		// boolean existe = false;
 		String s1, s2, s3;
 		s1 = "SELECT " + cb.listaCampos() + " FROM ";
 		s2 = " WHERE " + condId;
 		s3 = " ORDER BY " + orderby + " DESC";
-		existe = selectObjeto1(s1 + cb.listaTabla() + s2 + s3, cb);
-		if (!existe)
-			throw new Exception("El objeto no existe: Tabla::" + cb.listaTabla() + ", Condicion::" + condId);
+		// existe =
+		selectObjeto1(s1 + cb.listaTabla() + s2 + s3, cb);
+		// if (!existe)
+		// throw new Exception("El objeto no existe: Tabla::" + cb.listaTabla() + ",
+		// Condicion::" + condId);
 	}
+
 	private boolean selectObjeto1(String consulta, DAO cb) throws Exception {
 		ResultSet rs;
 		boolean existe = false;
