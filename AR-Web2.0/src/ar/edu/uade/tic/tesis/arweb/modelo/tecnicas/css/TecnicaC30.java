@@ -35,7 +35,7 @@ public class TecnicaC30 extends TecnicaCSS {
 						"Validación de las hojas de estilo: " + atributoHref, 
 						TipoResultadoEvaluacion.MANUAL,
 						"Verificar que el sitio web incluye un control que permita a los usuarios seleccionar una presentación alternatica que reemplace imagenes por texto.",
-						"Reemplazar el texto HTML estructurado con imágenes de texto de forma que los usuarios puedan ver el contenido de acuerdo con sus preferencias..");
+						"Reemplazar el texto HTML estructurado con imágenes de texto de forma que los usuarios puedan ver el contenido de acuerdo con sus preferencias.");
 				resultadoEvaluacionTecnica.agregarResultadoEvaluacionTecnicaItem(comprobacion);
 			}
 		}

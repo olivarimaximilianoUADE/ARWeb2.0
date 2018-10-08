@@ -7,6 +7,7 @@ import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_1_1_Teclado;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_1_2_SinTrampaDeTeclado;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_1_3_TecladoSinExcepcion;
+import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_1_4_AtajosDeTeclado;
 
 public class Pauta2_1_AccesibleATravesDelTeclado extends Pauta {
 
@@ -22,6 +23,7 @@ public class Pauta2_1_AccesibleATravesDelTeclado extends Pauta {
 		listaCriterios.add(new Criterio2_1_1_Teclado());
 		listaCriterios.add(new Criterio2_1_2_SinTrampaDeTeclado());
 		listaCriterios.add(new Criterio2_1_3_TecladoSinExcepcion());
+		listaCriterios.add(new Criterio2_1_4_AtajosDeTeclado());
 		return listaCriterios;
 	}
 

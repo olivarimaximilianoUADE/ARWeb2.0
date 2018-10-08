@@ -8,6 +8,7 @@ import ar.edu.uade.tic.tesis.arweb.modelo.pautas.Pauta2_1_AccesibleATravesDelTec
 import ar.edu.uade.tic.tesis.arweb.modelo.pautas.Pauta2_2_TiempoSuficiente;
 import ar.edu.uade.tic.tesis.arweb.modelo.pautas.Pauta2_3_Ataques;
 import ar.edu.uade.tic.tesis.arweb.modelo.pautas.Pauta2_4_Navegable;
+import ar.edu.uade.tic.tesis.arweb.modelo.pautas.Pauta2_5_ModalidadesDeEntrada;
 
 public class Principio2_Operabilidad extends Principio {
 
@@ -24,6 +25,7 @@ public class Principio2_Operabilidad extends Principio {
 		listaPautas.add(new Pauta2_2_TiempoSuficiente());
 		listaPautas.add(new Pauta2_3_Ataques());
 		listaPautas.add(new Pauta2_4_Navegable());
+		listaPautas.add(new Pauta2_5_ModalidadesDeEntrada());
 		return listaPautas;
 	}
 

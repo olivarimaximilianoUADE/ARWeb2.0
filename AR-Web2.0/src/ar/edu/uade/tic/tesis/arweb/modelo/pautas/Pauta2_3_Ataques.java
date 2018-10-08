@@ -6,6 +6,7 @@ import java.util.List;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_3_1_TresDestellosOPorDebajoDelUmbral;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_3_2_TresDestellos;
+import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_3_3_AnimacionDeInteracciones;
 
 public class Pauta2_3_Ataques extends Pauta {
 
@@ -20,6 +21,7 @@ public class Pauta2_3_Ataques extends Pauta {
 		List<Criterio> listaCriterios = new LinkedList<Criterio>();
 		listaCriterios.add(new Criterio2_3_1_TresDestellosOPorDebajoDelUmbral());
 		listaCriterios.add(new Criterio2_3_2_TresDestellos());
+		listaCriterios.add(new Criterio2_3_3_AnimacionDeInteracciones());
 		return listaCriterios;
 	}
 

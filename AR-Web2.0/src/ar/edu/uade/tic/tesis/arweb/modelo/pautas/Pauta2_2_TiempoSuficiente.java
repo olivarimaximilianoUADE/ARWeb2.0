@@ -9,6 +9,7 @@ import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_2_2_PausarDetenerO
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_2_3_SinTiempo;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_2_4_Interrupciones;
 import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_2_5_Reautenticacion;
+import ar.edu.uade.tic.tesis.arweb.modelo.criterios.Criterio2_2_6_TiemposDeEspera;
 
 public class Pauta2_2_TiempoSuficiente extends Pauta {
 
@@ -26,6 +27,7 @@ public class Pauta2_2_TiempoSuficiente extends Pauta {
 		listaCriterios.add(new Criterio2_2_3_SinTiempo());
 		listaCriterios.add(new Criterio2_2_4_Interrupciones());
 		listaCriterios.add(new Criterio2_2_5_Reautenticacion());
+		listaCriterios.add(new Criterio2_2_6_TiemposDeEspera());
 		return listaCriterios;
 	}
 
