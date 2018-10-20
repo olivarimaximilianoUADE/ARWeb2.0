@@ -127,7 +127,7 @@ function validarArchivo() {
 			}
 		});
 	};
-	reader.readAsDataURL(file);
+	reader.readAsDataURL($('#archivoFileUpload')[0].files[0]);
 }
 
 function validarHTML() {
