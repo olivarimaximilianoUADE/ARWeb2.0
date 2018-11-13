@@ -25,6 +25,13 @@ public class ResultadoEvaluacionPrincipio {
 			cantidadPautasOKPorPrincipio += resultadoEvaluacionPauta.getCantidadCriteriosOKPorPauta();
 		return cantidadPautasOKPorPrincipio;
 	}
+	
+	public Integer getCantidadPautasOKNivelAPorPrincipio() {
+		Integer cantidadPautasOKNivelAPorPrincipio = 0;
+		for (ResultadoEvaluacionPauta resultadoEvaluacionPauta : this.getResultadoEvaluacionPautas())
+			cantidadPautasOKNivelAPorPrincipio += resultadoEvaluacionPauta.getCantidadCriteriosOKNivelAPorPauta();
+		return cantidadPautasOKNivelAPorPrincipio;
+	}
 
 	public Integer getCantidadOKPorPrincipio() {
 		return this.getCantidadPorPrincipio(TipoResultadoEvaluacion.OK);

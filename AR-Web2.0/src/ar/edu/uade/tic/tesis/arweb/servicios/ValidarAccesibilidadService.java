@@ -320,6 +320,7 @@ public class ValidarAccesibilidadService{
 		String marcaTecnica = "";
 		
 		Integer cantidadOK = 0;
+		Integer cantidadOKNivelA = 0;
 		Integer cantidadError = 0;
 		Integer cantidadManual = 0;
 		Integer cantidadImposible = 0;
@@ -398,11 +399,13 @@ public class ValidarAccesibilidadService{
 				}
 			}
 			cantidadOK += resultadoEvaluacionPrincipio.getCantidadPautasOKPorPrincipio();
+			cantidadOKNivelA += resultadoEvaluacionPrincipio.getCantidadPautasOKNivelAPorPrincipio();
 			cantidadError += resultadoEvaluacionPrincipio.getCantidadErrorPorPrincipio();
 			cantidadManual += resultadoEvaluacionPrincipio.getCantidadManualPorPrincipio();
 			cantidadImposible += resultadoEvaluacionPrincipio.getCantidadImposiblePorPrincipio();
 		}
 		resul.setResultadoEvaluacion(resultados);
+		
 		
 		//CodigoHtml
 		String html = "";
@@ -430,7 +433,7 @@ public class ValidarAccesibilidadService{
 		det.setCantProblemas(cantidadError);
 		det.setCantAdvertencias(cantidadManual);
 		det.setCantNoVerificados(cantidadImposible);
-		det.setPuntos(cantidadOK * 4);//properties.get("PUNTAJE_UMBRAL"));
+		det.setPuntos((int)(cantidadOKNivelA * 3.3333));//properties.get("PUNTAJE_UMBRAL"));
 		
 		resul.setDetalle(det);
 		
