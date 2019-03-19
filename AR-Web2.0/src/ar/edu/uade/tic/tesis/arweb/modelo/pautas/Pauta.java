@@ -27,8 +27,12 @@ public abstract class Pauta extends Estructura {
 
 	public ResultadoEvaluacionPauta validarAccesibilidadPorPauta(Parseador parseador) {
 		ResultadoEvaluacionPauta resultadoEvaluacionPauta = new ResultadoEvaluacionPauta(this);
-		for (Criterio criterio : this.getCriterios())
-			resultadoEvaluacionPauta.agregarResultadoEvaluacionCriterio(criterio.validarAccesibilidadPorCriterio(parseador));
+		for (Criterio criterio : this.getCriterios()) {
+			int criterioNivel = criterio.getNivelAccesibilidad().getValueName();
+			int parseadorNivel = parseador.getNivelAccesibilidad().getValueRepresentacion(); 
+			if(criterioNivel <= parseadorNivel)
+				resultadoEvaluacionPauta.agregarResultadoEvaluacionCriterio(criterio.validarAccesibilidadPorCriterio(parseador));
+		}
 		return resultadoEvaluacionPauta;
 	}
 

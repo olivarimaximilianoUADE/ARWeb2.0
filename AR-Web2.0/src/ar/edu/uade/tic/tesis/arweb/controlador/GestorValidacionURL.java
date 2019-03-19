@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import ar.edu.uade.tic.tesis.arweb.modelo.criterios.NivelAccesibilidad;
 import ar.edu.uade.tic.tesis.arweb.util.parser.Parseador;
 import ar.edu.uade.tic.tesis.arweb.util.utilidades.Contexto;
 import ar.edu.uade.tic.tesis.arweb.util.utilidades.ContextoClaves;
@@ -17,7 +18,7 @@ public class GestorValidacionURL {
 			return new ControlInformacion(ControlInformacion.ERROR, "Complete el campo URL.", "", null);
 		texto = Utilidades.completarURL(texto);
 		try {
-			parseador = new Parseador(new URL(texto));
+			parseador = new Parseador(new URL(texto), NivelAccesibilidad.A);
 		} catch (MalformedURLException e) {
 			return new ControlInformacion(ControlInformacion.ERROR, "La URL esta mal formada.", "", e);
 		} catch (IOException e) {

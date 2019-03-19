@@ -11,6 +11,16 @@ function validarUrl() {
 		$('[id$="divTxtUrlValidar"]')[0].classList.add('has-error');
 		return false;
 	}
+	
+	var ddlNivel = $('[id$="ddlNivel"]').val();
+	if(ddlNivel == "0"){
+		$('[id$="divDdlNivel"]')[0].classList.add('has-error');
+		return false;
+	}
+	else{
+		$('[id$="divDdlNivel"]')[0].classList.remove('has-error');
+	}
+	
 	$('[class$="loader"]').show();
 	$.ajax({
 		type : "POST",
@@ -38,6 +48,10 @@ function validarUrl() {
 				$('[class$="loader"]').hide();
 				// Lo llevo al tab de seleccion de url a validar
 				$('#tabs li a').eq(3).tab('show');
+				if(msg.data.length == 1){
+					$('#cmbURLs').val(msg.data[0]);
+					$('#btnValidar').click();
+				}
 			} else {
 				$('#divError').empty();
 				$('#divError').append(
@@ -66,6 +80,15 @@ function validarArchivo() {
 	} else {
 		$('[id$="divArchivoFileUpload"]')[0].classList.add('has-error');
 		return false;
+	}
+	
+	var ddlNivel = $('[id$="ddlNivel"]').val();
+	if(ddlNivel == "0"){
+		$('[id$="divDdlNivel"]')[0].classList.add('has-error');
+		return false;
+	}
+	else{
+		$('[id$="divDdlNivel"]')[0].classList.remove('has-error');
 	}
 
 	var principios = '';
@@ -97,8 +120,7 @@ function validarArchivo() {
 			headers : {
 				'token' : '123456789'
 			},
-			data : '{"url": "' + fileBase64 + '", "principios":"' + principios
-					+ '"}',
+			data : '{"url": "' + fileBase64 + '", "principios":"' + principios + ',"nivel": "' + ddlNivel + '"}',
 			contentType : "application/json",
 			dataType : "json",
 			success : function(msg) {
@@ -138,6 +160,15 @@ function validarHTML() {
 		$('[id$="divTxtCodigoHTML"]')[0].classList.add('has-error');
 		return false;
 	}
+	
+	var ddlNivel = $('[id$="ddlNivel"]').val();
+	if(ddlNivel == "0"){
+		$('[id$="divDdlNivel"]')[0].classList.add('has-error');
+		return false;
+	}
+	else{
+		$('[id$="divDdlNivel"]')[0].classList.remove('has-error');
+	}
 
 	var principios = '';
 	$('input[name="principios"]:checked').each(function() {
@@ -165,7 +196,7 @@ function validarHTML() {
 		headers : {
 			'token' : '123456789'
 		},
-		data : '{"url": "' + html + '", "principios":"' + principios + '"}',
+		data : '{"url": "' + html + '", "principios":"' + principios + ',"nivel": "' + ddlNivel + '"}',
 		contentType : "application/json",
 		dataType : "json",
 		success : function(msg) {
@@ -203,6 +234,15 @@ function validarByUrl() {
 		$('[id$="divCmbURLs"]')[0].classList.add('has-error');
 		return false;
 	}
+	
+	var ddlNivel = $('[id$="ddlNivel"]').val();
+	if(ddlNivel == "0"){
+		$('[id$="divDdlNivel"]')[0].classList.add('has-error');
+		return false;
+	}
+	else{
+		$('[id$="divDdlNivel"]')[0].classList.remove('has-error');
+	}
 
 	var principios = '';
 	$('input[name="principios"]:checked').each(function() {
@@ -223,6 +263,7 @@ function validarByUrl() {
 		$('#divError').empty();
 		$('#divError').hide();
 	}
+		
 	$('[class$="loader"]').show();
 	$.ajax({
 		type : "POST",
@@ -230,8 +271,7 @@ function validarByUrl() {
 		headers : {
 			'token' : '123456789'
 		},
-		data : '{"url": "' + urlAValidar + '", "principios":"' + principios
-				+ '"}',
+		data : '{"url": "' + urlAValidar + '", "principios":"' + principios	+ '","nivel": "' + ddlNivel + '"}',
 		contentType : "application/json",
 		dataType : "json",
 		success : function(msg) {
@@ -266,6 +306,7 @@ function setResults() {
 	$('[id$="divRecurso"]')[0].innerHTML = data.detalle.recurso;
 	$('[id$="divFechaHora"]')[0].innerHTML = data.detalle.fechaHora;
 	$('[id$="divPrincipios"]')[0].innerHTML = data.detalle.principios;
+	$('[id$="divNivelAccesibilidad"]')[0].innerHTML = $('[id$="ddlNivel"]').val();
 	$('[id$="divCantProblemas"]')[0].innerHTML = data.detalle.cantProblemas;
 	$('[id$="divCantAdvertencias"]')[0].innerHTML = data.detalle.cantAdvertencias;
 	$('[id$="divCantNoVerificados"]')[0].innerHTML = data.detalle.cantNoVerificados;
@@ -278,6 +319,11 @@ function setResults() {
 				+ ' - NO ACCESIBLE';
 		$('[id$="spanPuntos"]')[0].style.color = 'red';
 	}
+	if ($('[id$="ddlNivel"]').val() != "A") 
+		$('[id$="divPuntajeNivelA"]')[0].style.display = 'none';
+	else
+		$('[id$="divPuntajeNivelA"]')[0].style.display = '';
+	
 	// Historico
 	$('[id$="divRecursoHistorico"]')[0].innerHTML = data.historico.recurso;
 	$('[id$="divFechaHoraHistorico"]')[0].innerHTML = data.historico.fechaHora;
@@ -288,17 +334,22 @@ function setResults() {
 	$('[id$="divCantProblemasHistorico"]')[0].innerHTML = data.historico.cantProblemas;
 	$('[id$="divCantAdvertenciasHistorico"]')[0].innerHTML = data.historico.cantAdvertencias;
 	$('[id$="divCantNoVerificadosHistorico"]')[0].innerHTML = data.historico.cantNoVerificados;
-	if ((data.historico.puntos * 1) > 0) {
-		if ((data.historico.puntos * 1) > 50) {
-			$('[id$="spanPuntosHistorico"]')[0].innerHTML = data.historico.puntos
-					+ ' - ACCESIBLE';
-			$('[id$="spanPuntosHistorico"]')[0].style.color = 'green';
-		} else {
-			$('[id$="spanPuntosHistorico"]')[0].innerHTML = data.historico.puntos
-					+ ' - NO ACCESIBLE';
-			$('[id$="spanPuntosHistorico"]')[0].style.color = 'red';
+	if((data.historico.nivelAccesibilidad.match(new RegExp("A", "g")) || []).length == 1) {
+		if ((data.historico.puntos * 1) > 0) {
+			if ((data.historico.puntos * 1) > 50) {
+				$('[id$="spanPuntosHistorico"]')[0].innerHTML = data.historico.puntos
+						+ ' - ACCESIBLE';
+				$('[id$="spanPuntosHistorico"]')[0].style.color = 'green';
+			} else {
+				$('[id$="spanPuntosHistorico"]')[0].innerHTML = data.historico.puntos
+						+ ' - NO ACCESIBLE';
+				$('[id$="spanPuntosHistorico"]')[0].style.color = 'red';
+			}
 		}
+		$('[id$="divPuntajeNivelAHistorico"]')[0].style.display = '';
 	}
+	else
+		$('[id$="divPuntajeNivelAHistorico"]')[0].style.display = 'none';
 	if (data.historico.id > 0)
 		$('[id$="divBotonesHistorico"]')[0].style.display = '';
 	else
@@ -333,6 +384,7 @@ function setResults() {
 						+ ',\'Criterio\');" data-toggle="Ver Detalle Criterio"><img alt="Ver Detalle Criterio" src="images/help.png"></a></td>';
 			else
 				resultado += '<td></td>';
+			resultado += '<td>' + data.resultadoEvaluacion[i].nivelAccesibilidad + '</td>';
 			resultado += '<td>' + data.resultadoEvaluacion[i].nivel + '</td>';
 			if (data.resultadoEvaluacion[i].tecnica != "")
 				resultado += '<td>'

@@ -35,6 +35,7 @@ import ar.edu.uade.tic.tesis.arweb.controlador.GestorBaseDatos;
 import ar.edu.uade.tic.tesis.arweb.controlador.TipoValidacion;
 import ar.edu.uade.tic.tesis.arweb.db.AnalisisDAO;
 import ar.edu.uade.tic.tesis.arweb.modelo.base.Estructura;
+import ar.edu.uade.tic.tesis.arweb.modelo.criterios.NivelAccesibilidad;
 import ar.edu.uade.tic.tesis.arweb.modelo.evaluacion.ResultadoEvaluacionCriterio;
 import ar.edu.uade.tic.tesis.arweb.modelo.evaluacion.ResultadoEvaluacionPauta;
 import ar.edu.uade.tic.tesis.arweb.modelo.evaluacion.ResultadoEvaluacionPrincipio;
@@ -70,7 +71,9 @@ public class ValidarAccesibilidadService{
 			if (validacion.getUrl().equals("") || validacion.getUrl().equals("http://"))
 				throw new Exception("Complete el campo URL.");
 			validacion.setUrl(Utilidades.completarURL(validacion.getUrl()));
-			parseador = new Parseador(new URL(validacion.getUrl()));
+			NivelAccesibilidad nivelAcces = NivelAccesibilidad.A;
+			nivelAcces.setRepresentacion(validacion.getNivel());
+			parseador = new Parseador(new URL(validacion.getUrl()), nivelAcces);
 			
 			List<String> listaUrls = new ArrayList<String>();
 			
@@ -122,7 +125,9 @@ public class ValidarAccesibilidadService{
 			if (validacion.getUrl().equals("") || validacion.getUrl().equals("http://"))
 				throw new Exception("Complete el campo URL.");
 			validacion.setUrl(Utilidades.completarURL(validacion.getUrl()));
-			parseador = new Parseador(new URL(validacion.getUrl()));
+			NivelAccesibilidad nivel = NivelAccesibilidad.A;
+			nivel.setRepresentacion(validacion.getNivel());
+			parseador = new Parseador(new URL(validacion.getUrl()), nivel);
 			
 			resp.setData(generarResultado(parseador, validacion, properties, TipoValidacion.PAGINA_WEB));
 			resp.setStatusCode(StatusCode.Success);
@@ -169,7 +174,9 @@ public class ValidarAccesibilidadService{
 			fos.close();
 			
 			Parseador parseador = null;
-			parseador = new Parseador(tempFile);//new File(validacion.getUrl()));
+			NivelAccesibilidad nivel = NivelAccesibilidad.A;
+			nivel.setRepresentacion(validacion.getNivel());
+			parseador = new Parseador(tempFile, nivel);//new File(validacion.getUrl()));
 			
 			resp.setData(generarResultado(parseador, validacion, properties, TipoValidacion.ARCHIVO));
 			resp.setStatusCode(StatusCode.Success);
@@ -209,7 +216,9 @@ public class ValidarAccesibilidadService{
 				throw new Exception("Complete el campo URL.");
 			
 			Parseador parseador = null;
-			parseador = new Parseador(validacion.getUrl());
+			NivelAccesibilidad nivel = NivelAccesibilidad.A;
+			nivel.setRepresentacion(validacion.getNivel());
+			parseador = new Parseador(validacion.getUrl(), nivel);
 			
 			resp.setData(generarResultado(parseador, validacion, properties, TipoValidacion.ARCHIVO));
 			resp.setStatusCode(StatusCode.Success);
@@ -359,11 +368,12 @@ public class ValidarAccesibilidadService{
 								resultado.setCriterioNumero(resultadoEvaluacionCriterio.getCriterio().getNumero());
 								resultado.setCriterioNombre(resultadoEvaluacionCriterio.getCriterio().getNombre());
 								resultado.setCriterioDescripcion(resultadoEvaluacionCriterio.getCriterio().getDescripcion());
-								resultado.setNivelAccesibilidad(resultadoEvaluacionCriterio.getCriterio().getNivelAccesibilidad().getRepresentacion());
+								resultado.setNivelAccesibilidad(resultadoEvaluacionCriterio.getCriterio().getNivelAccesibilidad().name());
 							}
 							else {
 								resultado.setCriterio("");
 								resultado.setNivel("");
+								resultado.setNivelAccesibilidad("");
 							}
 							if (!marcaTecnica.equals(resultadoEvaluacionTecnica.getTecnica().toString())) {
 								resultado.setTecnica(Utilidades.getTextoFormateadoConLongitud(resultadoEvaluacionTecnica.getTecnica().toString(), 6));//, new ImageIcon(this.getClass().getResource(Constantes.PATH_IMAGE_HELP)));
@@ -445,7 +455,7 @@ public class ValidarAccesibilidadService{
 		hist.setFechaHora(analisisDAO.getPrincipios() == "" ? "---" : analisisDAO.getFechaHora());
 		hist.setPautas(analisisDAO.getPrincipios() == "" ? "---" : "WCAG 2.0");
 		hist.setPrincipios(analisisDAO.getPrincipios() == "" ? "---" : analisisDAO.getPrincipios());
-		hist.setNivelAccesibilidad(analisisDAO.getPrincipios() == "" ? "---" : analisisDAO.getNivelAccesibilidad() + " " + "(umbral: " + analisisDAO.getUmbralString() + " puntos)");
+		hist.setNivelAccesibilidad(analisisDAO.getPrincipios() == "" ? "---" : analisisDAO.getNivelAccesibilidad());// + " " + "(umbral: " + analisisDAO.getUmbralString() + " puntos)");
 		hist.setTecnologias(analisisDAO.getPrincipios() == "" ? "---" : "HTML, CSS y JavaScript");
 		hist.setCantProblemas(analisisDAO.getPrincipios() == "" ? "---" : String.valueOf(analisisDAO.getProblemasString()));
 		hist.setCantAdvertencias(analisisDAO.getPrincipios() == "" ? "---" : String.valueOf(analisisDAO.getAdvertenciasString()));
@@ -459,7 +469,7 @@ public class ValidarAccesibilidadService{
 		
 		//Guardo los resultados del analisis
 		resul.setAnalisisId(GestorBaseDatos.insertarHistorico(tipoValidacion,
-				validacion.getUrl(), validacion.getPrincipios(), "A",
+				validacion.getUrl(), validacion.getPrincipios(), validacion.getNivel(),
 				Integer.parseInt(properties.get("PUNTAJE_UMBRAL").toString()),
 				resul.getDetalle().getCantProblemas(),
 				resul.getDetalle().getCantAdvertencias(),

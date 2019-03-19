@@ -61,6 +61,15 @@
 		  			<div class="checkbox">
 		  				<label><input type="checkbox" name="principios" value="4" checked>4. Robustez</label>
 		  			</div>
+		  			<div id="divDdlNivel" class="form-group">
+		  			<label class="control-label" for="ddlNivel">Seleccione el nivel de accesibilidad a analizar:</label>
+		  				<select id="ddlNivel" class="form-control">
+		  					<option value="0">Seleccionar</option>
+        					<option value="A">Nivel A</option>
+        					<option value="AA">Nivel AA</option>
+        					<option value="AAA">Nivel AAA</option>
+      					</select>
+		  			</div>
 		      	</div>
 		      </div>
 			  <ul id="tabs" class="nav nav-tabs">
@@ -108,7 +117,7 @@
 		  				</select>
 		  			</div>
 		  			<div class="text-center">
-			  			<button type="button" class="btn btn-primary" onclick="return validarByUrl();">Validar</button>
+			  			<button id="btnValidar" type="button" class="btn btn-primary" onclick="return validarByUrl();">Validar</button>
 			  		</div>
 		  		</div>
 		  		<br />
@@ -163,8 +172,8 @@
 								<div class="col-sm-6">
 									<b>Nivel Accesibilidad:</b>
 								</div>
-								<div class="col-sm-6">
-									A (umbral: 50 puntos)
+								<div id="divNivelAccesibilidad" class="col-sm-6">
+									
 								</div>
 							</div>
 							<div class="row">
@@ -196,7 +205,7 @@
 								<div id="divCantNoVerificados" class="col-sm-6">
 								</div>
 							</div>
-							<div class="text-center">
+							<div id="divPuntajeNivelA" class="text-center">
 								<b>Puntaje nivel A: </b><span id="spanPuntos"></span>
 							</div>
 							<div class="row">
@@ -288,7 +297,7 @@
 								<div id="divCantNoVerificadosHistorico" class="col-sm-6">
 								</div>
 							</div>
-							<div class="text-center">
+							<div id="divPuntajeNivelAHistorico"  class="text-center">
 								<b>Puntaje nivel A: </b><span id="spanPuntosHistorico"></span>
 							</div>
 							<div id="divBotonesHistorico" class="row">
@@ -325,6 +334,7 @@
 							      <th scope="col">Ppios.</th>
 							      <th scope="col">Pautas</th>
 							      <th scope="col">Criterios</th>
+							      <th scope="col">Nivel</th>
 							      <th scope="col">Puntos A</th>
 							      <th scope="col">Técnicas</th>
 							      <th scope="col">Tipologías</th>

@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
+import ar.edu.uade.tic.tesis.arweb.modelo.criterios.NivelAccesibilidad;
 import ar.edu.uade.tic.tesis.arweb.modelo.evaluacion.ResultadoEvaluacionPrincipio;
 import ar.edu.uade.tic.tesis.arweb.modelo.guia.WCAG20;
 import ar.edu.uade.tic.tesis.arweb.modelo.principios.Principio;
@@ -29,16 +30,16 @@ public class GestorValidacionAccesibilidad implements Runnable {
 	private void validarAccesibilidad() {
 		Parseador parseador = null;
 		switch(this.getTipoValidacion().getRepresentacionNumerica()) {
-		case 1:	try {
-			parseador = new Parseador(new URL(this.getTexto()));
+		case 1:	try {			
+			parseador = new Parseador(new URL(this.getTexto()), NivelAccesibilidad.A);
 		} catch (MalformedURLException e) {	} 
 		catch (IOException e) { } 
 		break;
-		case 2: try {
-			parseador = new Parseador(new File(this.getTexto()));
+		case 2: try {			
+			parseador = new Parseador(new File(this.getTexto()), NivelAccesibilidad.AA);
 		} catch (IOException e) {} 
 		break;
-		case 3: parseador = new Parseador(this.getTexto());
+		case 3:	parseador = new Parseador(this.getTexto(), NivelAccesibilidad.AAA);
 		}
 		List<ResultadoEvaluacionPrincipio> resultadoValidacionGeneral = new LinkedList<ResultadoEvaluacionPrincipio>();
 		for (Principio principio : new WCAG20().getPrincipios())

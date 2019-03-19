@@ -30,7 +30,7 @@ public class ResultadoEvaluacionPauta {
 	public Integer getCantidadCriteriosOKNivelAPorPauta() {
 		Integer cantidadCriteriosOKNivelAPorPauta = 0;
 		for (ResultadoEvaluacionCriterio resultadoEvaluacionCriterio : this.getResultadoEvaluacionCriterios())
-			if (resultadoEvaluacionCriterio.isOKResultadoEvaluacionCriterio() && resultadoEvaluacionCriterio.getCriterio().getNivelAccesibilidad().getRepresentacion() == "A")
+			if (resultadoEvaluacionCriterio.isOKResultadoEvaluacionCriterio() && resultadoEvaluacionCriterio.getCriterio().getNivelAccesibilidad().name() == "A")
 				cantidadCriteriosOKNivelAPorPauta++;
 		return cantidadCriteriosOKNivelAPorPauta;
 	}
