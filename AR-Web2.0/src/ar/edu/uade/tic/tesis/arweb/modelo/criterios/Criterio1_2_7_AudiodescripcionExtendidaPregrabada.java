@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class Criterio1_2_7_AudiodescripcionExtendidaPregrabada extends Criterio 
 				"1.2.7",
 				"Audiodescripción extendida (pregrabada)",
 				"Cuando las pausas en el audio de primer plano son insuficientes para permitir que la audiodescripción comunique el significado del vídeo, se proporciona una audiodescripción ampliada para todos los contenidos de vídeo grabado dentro de contenido multimedia sincronizado.", 
-				NivelAccesibilidad.AAA);
+				NivelAccesibilidad.AAA,
+				Arrays.asList("2.0","2.1"));
 	}
 	
 	public List<Tecnica> getTecnicasAAgregar() {

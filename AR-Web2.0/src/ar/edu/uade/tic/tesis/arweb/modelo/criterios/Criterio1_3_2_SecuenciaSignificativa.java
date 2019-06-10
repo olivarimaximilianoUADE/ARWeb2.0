@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class Criterio1_3_2_SecuenciaSignificativa extends Criterio {
 				"1.3.2",
 				"Secuencia significativa.",
 				"Cuando la secuencia en la que se presenta un contenido afecta a su significado, la secuencia correcta de lectura puede ser programablemente determinada.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,7 +26,8 @@ public Criterio1_4_4_VariarElTamanioDelTexto() {
 			"1.4.4",
 			"Variar el tamaño del texto.",
 			"A excepción de los subtítulos y las imágenes de texto, todo el texto puede ser ajustado sin ayudas técnicas hasta un 200 por ciento sin que se pierdan el contenido o la funcionalidad.",
-			NivelAccesibilidad.AA);
+			NivelAccesibilidad.AA,
+			Arrays.asList("2.0","2.1"));
 }
 
 	public List<Tecnica> getTecnicasAAgregar() {

@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class Criterio2_4_2_PaginaTitulada extends Criterio {
 				"2.4.2", 
 				"Página titulada.",
 				"Las páginas web tienen títulos que describen su tema o propósito.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

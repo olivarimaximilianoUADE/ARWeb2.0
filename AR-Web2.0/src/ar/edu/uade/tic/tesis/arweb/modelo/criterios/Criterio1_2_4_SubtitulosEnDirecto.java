@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class Criterio1_2_4_SubtitulosEnDirecto extends Criterio {
 				"1.2.4",
 				"Subtítulos (en directo).",
 				"Se proporcionan subtítulos para todo el contenido de audio en directo de los multimedia sincronizados.",
-				NivelAccesibilidad.AA);
+				NivelAccesibilidad.AA,
+				Arrays.asList("2.0","2.1"));
 	}
 	
 	public List<Tecnica> getTecnicasAAgregar() {

@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,7 +22,8 @@ public class Criterio2_4_1_SaltarBloques extends Criterio {
 				"2.4.1",
 				"Saltar bloques.",
 				"Existe un mecanismo que permite saltar bloques de contenido que se repiten en múltiples páginas web.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

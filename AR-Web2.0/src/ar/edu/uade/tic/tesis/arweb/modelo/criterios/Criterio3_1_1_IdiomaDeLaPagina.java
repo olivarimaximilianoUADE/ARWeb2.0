@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class Criterio3_1_1_IdiomaDeLaPagina extends Criterio {
 				"3.1.1", 
 				"Idioma de la página.",
 				"El idioma por defecto de cada página web puede ser programablemente determinado.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

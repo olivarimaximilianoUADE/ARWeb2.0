@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class Criterio2_2_4_Interrupciones extends Criterio {
 				"2.2.4",
 				"Interrupciones.",
 				"El usuario puede postergar o suprimir las interrupciones, excepto cuando las interrupciones implican una emergencia.",
-				NivelAccesibilidad.AAA);
+				NivelAccesibilidad.AAA,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

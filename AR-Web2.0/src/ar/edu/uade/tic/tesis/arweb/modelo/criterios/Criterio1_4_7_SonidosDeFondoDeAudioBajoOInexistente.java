@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class Criterio1_4_7_SonidosDeFondoDeAudioBajoOInexistente extends Criteri
 				"1.4.7",
 				"Sonido de fondo bajo o ausente.",
 				"Para el contenido de sólo audio grabado que (1) contiene habla en primer plano, (2) no es un CAPTCHA sonoro o un audiologo, y (3) que no es una vocalización cuya intención principal es servir como expresión musical (como el canto o el rap), se cumple al menos uno de los siguientes casos: El audio no contiene sonidos de fondo, Los sonidos de fondo pueden ser apagados ó Los sonidos de fondo son, al menos, 20 decibelios más bajos que el discurso en primer plano, con la excepción de sonidos ocasionales que duran solamente uno o dos segundos.",
-				NivelAccesibilidad.AAA);
+				NivelAccesibilidad.AAA,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

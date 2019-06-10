@@ -30,7 +30,7 @@ public abstract class Pauta extends Estructura {
 		for (Criterio criterio : this.getCriterios()) {
 			int criterioNivel = criterio.getNivelAccesibilidad().getValueName();
 			int parseadorNivel = parseador.getNivelAccesibilidad().getValueRepresentacion(); 
-			if(criterioNivel <= parseadorNivel)
+			if(criterioNivel <= parseadorNivel && criterio.getVersionesWCAG().indexOf(parseador.getVersionWCAG()) != -1)
 				resultadoEvaluacionPauta.agregarResultadoEvaluacionCriterio(criterio.validarAccesibilidadPorCriterio(parseador));
 		}
 		return resultadoEvaluacionPauta;

@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class Criterio2_3_1_TresDestellosOPorDebajoDelUmbral extends Criterio {
 				"2.3.1",
 				"Tres destellos o por debajo del umbral.",
 				"Las páginas web no contienen nada que destelle más de tres veces en cualquier período de un segundo, o el destello está por debajo de los umbrales de destello general y de destello rojo.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

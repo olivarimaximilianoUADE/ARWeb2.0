@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class Criterio2_4_8_Ubicacion extends Criterio {
 				"2.4.8",
 				"Ubicación.",
 				"Se proporciona información acerca de la ubicación del usuario dentro de un conjunto de páginas web.",
-				NivelAccesibilidad.AAA);
+				NivelAccesibilidad.AAA,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,7 +22,8 @@ public Criterio1_4_5_ImagenesDeTexto() {
 			"1.4.5",
 			"Imágenes de texto.",
 			"Si con las tecnologías que se están utilizando se puede conseguir la presentación visual deseada, se utiliza texto para transmitir la información en vez de imágenes de texto, excepto en los siguientes casos: Configurable: La imagen de texto es visualmente configurable según los requisitos del usuario; Esencial: Una forma particular de presentación del texto resulta esencial para la información que se transmite.",
-			NivelAccesibilidad.AA);
+			NivelAccesibilidad.AA,
+			Arrays.asList("2.0","2.1"));
 }
 
 	public List<Tecnica> getTecnicasAAgregar() {

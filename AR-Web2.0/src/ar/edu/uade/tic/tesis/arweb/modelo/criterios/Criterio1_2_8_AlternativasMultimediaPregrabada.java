@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class Criterio1_2_8_AlternativasMultimediaPregrabada extends Criterio{
 				"1.2.8",
 				"Alternativas multimedia (pregrabada)",
 				"Se proporciona una alternativa para los medios tempodependientes, tanto para todos los contenidos multimedia sincronizados grabados como para todos los medios de sólo vídeo grabado.", 
-				NivelAccesibilidad.AAA);
+				NivelAccesibilidad.AAA,
+				Arrays.asList("2.0","2.1"));
 	}
 	
 	public List<Tecnica> getTecnicasAAgregar() {

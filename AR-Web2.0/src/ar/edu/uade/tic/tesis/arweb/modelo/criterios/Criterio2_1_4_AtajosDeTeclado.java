@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class Criterio2_1_4_AtajosDeTeclado extends Criterio {
 				"Hay un mecanismo disponible para volver a asignar el acceso directo para usar uno o más caracteres de teclado no imprimibles (por ejemplo, Ctrl, Alt, etc.);\r\n" + 
 				"Activo solo en foco:\r\n" + 
 				"El método abreviado de teclado para un componente de la interfaz de usuario solo está activo cuando el componente tiene el foco.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

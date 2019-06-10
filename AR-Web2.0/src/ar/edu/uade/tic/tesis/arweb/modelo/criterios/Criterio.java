@@ -12,13 +12,15 @@ public abstract class Criterio extends Estructura {
 
 	private List<Tecnica> tecnicas;
 	private NivelAccesibilidad nivelAccesibilidad;
+	private List<String> versionesWCAG;
 
-	public Criterio(String numero, String nombre, String descripcion, NivelAccesibilidad nivelAccesibilidad) {
+	public Criterio(String numero, String nombre, String descripcion, NivelAccesibilidad nivelAccesibilidad, List<String> versionesWCAG) {
 		super(numero, nombre, descripcion);
 		this.setTecnicas(new LinkedList<Tecnica>());
 		this.setNivelAccesibilidad(nivelAccesibilidad);
 		for (Tecnica tecnica : this.getTecnicasAAgregar())
 			this.agregarTecnica(tecnica);
+		this.setVersionesWCAG(versionesWCAG);
 	}
 
 	public abstract List<Tecnica> getTecnicasAAgregar();
@@ -49,6 +51,15 @@ public abstract class Criterio extends Estructura {
 	public void setNivelAccesibilidad(NivelAccesibilidad nivelAccesibilidad) {
 		this.nivelAccesibilidad = nivelAccesibilidad;
 	}
+	
+	public List<String> getVersionesWCAG() {
+		return this.versionesWCAG;
+	}
+
+	public void setVersionesWCAG(List<String> versionesWCAG) {
+		this.versionesWCAG = versionesWCAG;
+	}
+
 	
 	public String getPackageClassName() {
 		return this.getClass().getCanonicalName();

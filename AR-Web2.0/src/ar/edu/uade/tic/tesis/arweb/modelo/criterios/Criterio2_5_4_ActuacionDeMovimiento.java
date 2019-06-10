@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class Criterio2_5_4_ActuacionDeMovimiento extends Criterio {
 				"El movimiento se utiliza para operar la funcionalidad a través de una interfaz compatible con accesibilidad;\r\n" + 
 				"Esencial:\r\n" + 
 				"La moción es esencial para la función y hacerlo invalidaría la actividad.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

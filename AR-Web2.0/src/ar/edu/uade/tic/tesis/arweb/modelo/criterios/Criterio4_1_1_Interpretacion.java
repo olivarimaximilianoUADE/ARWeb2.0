@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class Criterio4_1_1_Interpretacion extends Criterio {
 				"4.1.1",
 				"Interpretación.",
 				"Para contenido que se haya implementado empleando un lenguaje de marcado, los elementos cuentan con etiquetas completas de cierre y apertura, se han anidado correctamente, no contienen atributos duplicados y cualquier ID es único, excepto donde la especificación permita excepciones.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

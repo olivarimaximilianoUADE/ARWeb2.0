@@ -110,6 +110,16 @@ function validarArchivo() {
 		$('#divError').empty();
 		$('#divError').hide();
 	}
+	
+	var ddlVersion = $('[id$="ddlVersion"]').val();
+	if(ddlVersion == "0"){
+		$('[id$="divDdlVersion"]')[0].classList.add('has-error');
+		return false;
+	}
+	else{
+		$('[id$="divDdlVersion"]')[0].classList.remove('has-error');
+	}
+	
 	$('[class$="loader"]').show();
 	var reader = new FileReader();
 	reader.onload = function(e) {
@@ -120,7 +130,7 @@ function validarArchivo() {
 			headers : {
 				'token' : '123456789'
 			},
-			data : '{"url": "' + fileBase64 + '", "principios":"' + principios + ',"nivel": "' + ddlNivel + '"}',
+			data : '{"url": "' + fileBase64 + '", "principios":"' + principios + ',"nivel": "' + ddlNivel + '","versionWCAG":"' + ddlVersion + '"}',
 			contentType : "application/json",
 			dataType : "json",
 			success : function(msg) {
@@ -189,6 +199,16 @@ function validarHTML() {
 		$('#divError').empty();
 		$('#divError').hide();
 	}
+	
+	var ddlVersion = $('[id$="ddlVersion"]').val();
+	if(ddlVersion == "0"){
+		$('[id$="divDdlVersion"]')[0].classList.add('has-error');
+		return false;
+	}
+	else{
+		$('[id$="divDdlVersion"]')[0].classList.remove('has-error');
+	}
+	
 	$('[class$="loader"]').show();
 	$.ajax({
 		type : "POST",
@@ -196,7 +216,7 @@ function validarHTML() {
 		headers : {
 			'token' : '123456789'
 		},
-		data : '{"url": "' + html + '", "principios":"' + principios + ',"nivel": "' + ddlNivel + '"}',
+		data : '{"url": "' + html + '", "principios":"' + principios + ',"nivel": "' + ddlNivel + '","versionWCAG":"' + ddlVersion + '"}',
 		contentType : "application/json",
 		dataType : "json",
 		success : function(msg) {
@@ -263,7 +283,16 @@ function validarByUrl() {
 		$('#divError').empty();
 		$('#divError').hide();
 	}
-		
+	
+	var ddlVersion = $('[id$="ddlVersion"]').val();
+	if(ddlVersion == "0"){
+		$('[id$="divDdlVersion"]')[0].classList.add('has-error');
+		return false;
+	}
+	else{
+		$('[id$="divDdlVersion"]')[0].classList.remove('has-error');
+	}
+	
 	$('[class$="loader"]').show();
 	$.ajax({
 		type : "POST",
@@ -271,7 +300,7 @@ function validarByUrl() {
 		headers : {
 			'token' : '123456789'
 		},
-		data : '{"url": "' + urlAValidar + '", "principios":"' + principios	+ '","nivel": "' + ddlNivel + '"}',
+		data : '{"url": "' + urlAValidar + '","principios":"' + principios	+ '","nivel":"' + ddlNivel + '","versionWCAG":"' + ddlVersion + '"}',
 		contentType : "application/json",
 		dataType : "json",
 		success : function(msg) {

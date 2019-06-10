@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class Criterio1_2_2_SubtitulosPregrabados extends Criterio {
 				"1.2.2",
 				"Subtítulos (pregrabados).",
 				"Se proporcionan subtítulos para todo audio pregrabado presente en un contenido multimedia sincronizado, excepto cuando tal contenido es un contenido multimedia alternativo al texto y está claramente identificado como tal.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

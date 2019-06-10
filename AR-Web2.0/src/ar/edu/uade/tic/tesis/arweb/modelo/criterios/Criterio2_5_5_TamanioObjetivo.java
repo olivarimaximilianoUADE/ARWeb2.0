@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,7 +22,8 @@ public class Criterio2_5_5_TamanioObjetivo extends Criterio {
 				"El tamaño del objetivo lo determina el agente del usuario y no lo modifica el autor;\r\n" + 
 				"Esencial:\r\n" + 
 				"Una presentación particular del objetivo es esencial para la información que se transmite.",
-				NivelAccesibilidad.AAA);
+				NivelAccesibilidad.AAA,
+				Arrays.asList("2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

@@ -26,24 +26,28 @@ public class Parseador {
 	private Source source;
 	private OutputDocument outputDocument;
 	private NivelAccesibilidad nivelAccesibilidad;
+	private String versionWCAG;
 	public static final String WEB_SITE_JAVADOC = "http://jericho.htmlparser.net/docs/javadoc/index.html";//Constantes.URL_JERICHO; 
 
-	public Parseador(URL url, NivelAccesibilidad nivelAccesibilidad) throws IOException {
+	public Parseador(URL url, NivelAccesibilidad nivelAccesibilidad, String versionWCAG) throws IOException {
 		this.setSource(new Source(url));
 		this.setOutputDocument(new OutputDocument(this.getSource()));
 		this.setNivelAccesibilidad(nivelAccesibilidad);
+		this.setVersionWCAG(versionWCAG);
 	}
 
-	public Parseador(File file, NivelAccesibilidad nivelAccesibilidad) throws IOException {
+	public Parseador(File file, NivelAccesibilidad nivelAccesibilidad, String versionWCAG) throws IOException {
 		this.setSource(new Source(file));
 		this.setOutputDocument(new OutputDocument(this.getSource()));
 		this.setNivelAccesibilidad(nivelAccesibilidad);
+		this.setVersionWCAG(versionWCAG);
 	}
 
-	public Parseador(String codigo, NivelAccesibilidad nivelAccesibilidad) {
+	public Parseador(String codigo, NivelAccesibilidad nivelAccesibilidad, String versionWCAG) {
 		this.setSource(new Source(codigo));
 		this.setOutputDocument(new OutputDocument(this.getSource()));
 		this.setNivelAccesibilidad(nivelAccesibilidad);
+		this.setVersionWCAG(versionWCAG);
 	}	
 
 	public Source getSource() {
@@ -60,6 +64,14 @@ public class Parseador {
 
 	public void setNivelAccesibilidad(NivelAccesibilidad nivelAccesibilidad) {
 		this.nivelAccesibilidad = nivelAccesibilidad;
+	}
+	
+	public String getVersionWCAG() {
+		return this.versionWCAG;
+	}
+
+	public void setVersionWCAG(String versionWCAG) {
+		this.versionWCAG = versionWCAG;
 	}
 
 	public OutputDocument getOutputDocument() {
@@ -123,7 +135,7 @@ public class Parseador {
 			else {
 				for (String url : mapaURL.get(i-1)) {
 					try {
-						Parseador p = new Parseador(new URL(url), parseador.getNivelAccesibilidad());
+						Parseador p = new Parseador(new URL(url), parseador.getNivelAccesibilidad(), "2.0");
 						for (Element elementoA : p.getElementos(HTMLElementName.A)) {
 							String atributoHref = elementoA.getAttributeValue("href");
 							if (atributoHref != null)

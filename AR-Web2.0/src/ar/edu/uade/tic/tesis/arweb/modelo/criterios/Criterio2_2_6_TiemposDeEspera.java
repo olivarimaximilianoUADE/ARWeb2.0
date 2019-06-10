@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,7 +13,8 @@ public class Criterio2_2_6_TiemposDeEspera  extends Criterio {
 				"2.2.6",
 				"Tiempos de Espera.",
 				"Se advierte a los usuarios sobre la duración de la inactividad de cualquier usuario que pueda causar la pérdida de datos, a menos que los datos se conserven durante más de 20 horas cuando el usuario no realiza ninguna acción.",
-				NivelAccesibilidad.AAA);
+				NivelAccesibilidad.AAA,
+				Arrays.asList("2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

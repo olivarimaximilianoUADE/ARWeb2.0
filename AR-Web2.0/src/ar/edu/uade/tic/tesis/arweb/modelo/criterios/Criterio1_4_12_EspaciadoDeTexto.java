@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,7 +22,8 @@ public class Criterio1_4_12_EspaciadoDeTexto  extends Criterio {
 				"Espacio entre párrafos: al menos 2 veces el tamaño de la fuente.\r\n" + 
 				"Espacio entre las letras (tracking): al menos 0.12 veces el tamaño de la fuente.\r\n" + 
 				"Espacio entre palabras: al menos 0.16 veces el tamaño de la fuente.",
-				NivelAccesibilidad.AA);
+				NivelAccesibilidad.AA,
+				Arrays.asList("2.1"));
 	}
 	
 	public List<Tecnica> getTecnicasAAgregar() {

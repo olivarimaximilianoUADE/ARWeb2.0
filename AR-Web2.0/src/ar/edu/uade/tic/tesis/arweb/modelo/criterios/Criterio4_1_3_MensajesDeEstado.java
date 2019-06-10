@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class Criterio4_1_3_MensajesDeEstado extends Criterio {
 				"4.1.3",
 				"Mensajes de estado.",
 				"En el contenido implementado utilizando lenguajes de marcado, los mensajes de estado se pueden determinar mediante roles o propiedades, de modo que se puedan presentar al usuario mediante tecnologías de asistencia sin recibir atención.",
-				NivelAccesibilidad.AA);
+				NivelAccesibilidad.AA,
+				Arrays.asList("2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

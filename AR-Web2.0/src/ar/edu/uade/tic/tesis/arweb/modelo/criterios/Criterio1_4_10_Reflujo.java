@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class Criterio1_4_10_Reflujo extends Criterio {
 				"\r\n" + 
 				"Contenido con desplazamiento vertical con un ancho equivalente a 320 píxeles CSS;\r\n" + 
 				"Contenido con desplazamiento horizontal con una altura equivalente a 256 píxeles CSS;",
-				NivelAccesibilidad.AA);
+				NivelAccesibilidad.AA,
+				Arrays.asList("2.1"));
 	}
 	
 	public List<Tecnica> getTecnicasAAgregar() {

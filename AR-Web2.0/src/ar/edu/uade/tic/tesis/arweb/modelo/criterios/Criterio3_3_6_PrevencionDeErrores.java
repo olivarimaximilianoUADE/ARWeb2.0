@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class Criterio3_3_6_PrevencionDeErrores extends Criterio {
 				"3.3.6",
 				"Ayuda.",
 				"Para las páginas web que requieren al usuario el envío de información, se cumple al menos uno de los siguientes casos: El envío es reversible, Se verifica la información para detectar errores en la entrada de datos y se proporciona al usuario una oportunidad de corregirlos o Se proporciona un mecanismo para revisar, confirmar y corregir la información antes de finalizar el envío de los datos.",
-				NivelAccesibilidad.AAA);
+				NivelAccesibilidad.AAA,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

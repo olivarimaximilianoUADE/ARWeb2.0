@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,7 +25,8 @@ public class Criterio3_3_2_InstruccionesOEtiquetas extends Criterio {
 				"3.3.2",
 				"Instrucciones o etiquetas.",
 				"Se proporcionan etiquetas o instrucciones cuando el contenido requiere entrada de datos por parte del usuario.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,7 +27,8 @@ public class Criterio2_4_4_PropositoDeUnVinculoEnSuContexto extends Criterio {
 				"2.4.4",
 				"Propósito de un vínculo (en su contexto).",
 				"El propósito de cada vínculo puede determinarse con el texto del vínculo descontextualizado, o del texto del vínculo junto a su contexto programablemente determinable, excepto donde el propósito del vínculo puede ser ambiguo para los usuarios en general.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

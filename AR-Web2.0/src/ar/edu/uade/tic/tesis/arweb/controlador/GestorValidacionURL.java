@@ -18,7 +18,7 @@ public class GestorValidacionURL {
 			return new ControlInformacion(ControlInformacion.ERROR, "Complete el campo URL.", "", null);
 		texto = Utilidades.completarURL(texto);
 		try {
-			parseador = new Parseador(new URL(texto), NivelAccesibilidad.A);
+			parseador = new Parseador(new URL(texto), NivelAccesibilidad.A, "2.0");
 		} catch (MalformedURLException e) {
 			return new ControlInformacion(ControlInformacion.ERROR, "La URL esta mal formada.", "", e);
 		} catch (IOException e) {

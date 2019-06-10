@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class Criterio1_2_1_SoloAudioYSoloVideoPregrabado extends Criterio {
 				"1.2.1",
 				"Sólo audio y sólo vídeo (pregrabado).",
 				"Para contenidos pregrabados que consisten en sólo audio y sólo vídeo, se cumple lo siguiente, excepto para cuando el audio o el vídeo es un contenido multimedia alternativo al texto y está claramente identificado como tal.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

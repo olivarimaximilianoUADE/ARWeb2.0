@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,7 +22,8 @@ public class Criterio2_2_2_PausarDetenerOcultar extends Criterio {
 				"2.2.2",
 				"Pausar, detener, ocultar.",
 				"Para cualquier información que se mueva, parpadee, se desplace o se actualice automáticamente, se cumplen todos los puntos siguientes: Movimiento, parpadeo, desplazamiento: Para cualquier información que se mueva, parpadee o se desplace, y que (1) comience automáticamente, (2) dure más de cinco segundos, y (3) se presente paralelamente a otro contenido, existe un mecanismo que permite al usuario pausar, detener u ocultar la información, a menos que ese movimiento, parpadeo o desplazamiento sea esencial para la actividad, y Actualización automática: Para cualquier información que (1) comience automáticamente y (2) se presente paralelamente a otro contenido, existe un mecanismo que permite al usuario pausar, detener u ocultar la información, o controlar la frecuencia de la actualización, a menos que la actualización automática sea esencial para la actividad.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

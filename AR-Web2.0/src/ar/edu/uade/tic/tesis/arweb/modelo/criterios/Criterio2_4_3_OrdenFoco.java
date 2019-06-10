@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class Criterio2_4_3_OrdenFoco extends Criterio {
 				"2.4.3",
 				"Orden de foco.",
 				"Si una página web puede navegarse secuencialmente y la secuencia de navegación afecta a su significado u operatividad, los componentes que pueden recibir el foco lo hacen en un orden que conserva íntegros su significado y operatividad",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

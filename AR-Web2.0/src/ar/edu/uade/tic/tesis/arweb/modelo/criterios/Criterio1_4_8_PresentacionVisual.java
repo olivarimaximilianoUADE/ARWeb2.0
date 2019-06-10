@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,7 +43,8 @@ public Criterio1_4_8_PresentacionVisual() {
 			"4. El espacio entre líneas (interlineado) es de, al menos, un espacio y medio dentro de los párrafos y el espacio entre párrafos es, al menos, 1.5 veces mayor que el espacio entre líneas.\r\n" + 
 			"\r\n" + 
 			"5. El texto se ajusta sin ayudas técnicas hasta un 200 por ciento de modo tal que no requiere un desplazamiento horizontal para leer una línea de texto en una ventana a pantalla completa.",
-			NivelAccesibilidad.AAA);
+			NivelAccesibilidad.AAA,
+			Arrays.asList("2.0","2.1"));
 }
 
 	public List<Tecnica> getTecnicasAAgregar() {

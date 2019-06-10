@@ -4,6 +4,7 @@ public class Validacion {
 	private String url;
 	private String principios;
 	private String nivel;
+	private String versionWCAG;
 	
 	public String getUrl() {
 		return url;
@@ -22,5 +23,11 @@ public class Validacion {
 	}
 	public void setNivel(String nivel) {
 		this.nivel = nivel;
+	}
+	public String getVersionWCAG() {
+		return versionWCAG;
+	}
+	public void setVersionWCAG(String versionWCAG) {
+		this.versionWCAG = versionWCAG;
 	}
 }

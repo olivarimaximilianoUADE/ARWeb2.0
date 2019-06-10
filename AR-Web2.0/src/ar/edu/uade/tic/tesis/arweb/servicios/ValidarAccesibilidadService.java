@@ -73,7 +73,7 @@ public class ValidarAccesibilidadService{
 			validacion.setUrl(Utilidades.completarURL(validacion.getUrl()));
 			NivelAccesibilidad nivelAcces = NivelAccesibilidad.A;
 			nivelAcces.setRepresentacion(validacion.getNivel());
-			parseador = new Parseador(new URL(validacion.getUrl()), nivelAcces);
+			parseador = new Parseador(new URL(validacion.getUrl()), nivelAcces, validacion.getVersionWCAG());
 			
 			List<String> listaUrls = new ArrayList<String>();
 			
@@ -127,7 +127,7 @@ public class ValidarAccesibilidadService{
 			validacion.setUrl(Utilidades.completarURL(validacion.getUrl()));
 			NivelAccesibilidad nivel = NivelAccesibilidad.A;
 			nivel.setRepresentacion(validacion.getNivel());
-			parseador = new Parseador(new URL(validacion.getUrl()), nivel);
+			parseador = new Parseador(new URL(validacion.getUrl()), nivel, validacion.getVersionWCAG());
 			
 			resp.setData(generarResultado(parseador, validacion, properties, TipoValidacion.PAGINA_WEB));
 			resp.setStatusCode(StatusCode.Success);
@@ -176,7 +176,7 @@ public class ValidarAccesibilidadService{
 			Parseador parseador = null;
 			NivelAccesibilidad nivel = NivelAccesibilidad.A;
 			nivel.setRepresentacion(validacion.getNivel());
-			parseador = new Parseador(tempFile, nivel);//new File(validacion.getUrl()));
+			parseador = new Parseador(tempFile, nivel, validacion.getVersionWCAG());//new File(validacion.getUrl()));
 			
 			resp.setData(generarResultado(parseador, validacion, properties, TipoValidacion.ARCHIVO));
 			resp.setStatusCode(StatusCode.Success);
@@ -218,7 +218,7 @@ public class ValidarAccesibilidadService{
 			Parseador parseador = null;
 			NivelAccesibilidad nivel = NivelAccesibilidad.A;
 			nivel.setRepresentacion(validacion.getNivel());
-			parseador = new Parseador(validacion.getUrl(), nivel);
+			parseador = new Parseador(validacion.getUrl(), nivel, validacion.getVersionWCAG());
 			
 			resp.setData(generarResultado(parseador, validacion, properties, TipoValidacion.ARCHIVO));
 			resp.setStatusCode(StatusCode.Success);
@@ -443,7 +443,10 @@ public class ValidarAccesibilidadService{
 		det.setCantProblemas(cantidadError);
 		det.setCantAdvertencias(cantidadManual);
 		det.setCantNoVerificados(cantidadImposible);
-		det.setPuntos((int)(cantidadOKNivelA * 3.3333));//properties.get("PUNTAJE_UMBRAL"));
+		if(validacion.getVersionWCAG() == "2.1")
+			det.setPuntos((int)(cantidadOKNivelA * 3.3333));//properties.get("PUNTAJE_UMBRAL"));
+		else
+			det.setPuntos((int)(cantidadOKNivelA * 4));
 		
 		resul.setDetalle(det);
 		

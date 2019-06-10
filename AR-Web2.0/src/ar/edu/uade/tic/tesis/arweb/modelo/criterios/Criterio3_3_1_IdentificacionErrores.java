@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class Criterio3_3_1_IdentificacionErrores extends Criterio {
 				"3.3.1",
 				"Identificación de errores.",
 				"Si se detecta automáticamente un error de entrada de datos, se identifica el ítem erróneo y el error se describe al usuario por medio de texto.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,7 +22,8 @@ public class Criterio1_4_11_ContrasteSinTexto extends Criterio {
 				"\r\n" + 
 				"Componentes de la interfaz de usuario: información visual utilizada para identificar los componentes de la interfaz de usuario y los estados, excepto para componentes inactivos o cuando la apariencia del componente es determinada por el agente de usuario y el autor no la modifica.\r\n" + 
 				"Objetos gráficos: partes de los gráficos necesarias para comprender el contenido, excepto cuando una presentación particular de los gráficos es esencial para la información que se transmite (esencial como por ejemplo en los logotipos o en las banderas, en una captura de un sitio que muestra cómo es su apariencia, en un mapa de calor, en un diagrama médico que usa los colores utilizados en biología, etc.)",
-				NivelAccesibilidad.AA);
+				NivelAccesibilidad.AA,
+				Arrays.asList("2.1"));
 	}
 	
 	public List<Tecnica> getTecnicasAAgregar() {

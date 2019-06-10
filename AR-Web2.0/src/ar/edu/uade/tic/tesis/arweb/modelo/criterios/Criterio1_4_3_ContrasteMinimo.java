@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +18,8 @@ public Criterio1_4_3_ContrasteMinimo() {
 			"1.4.3",
 			"Contraste (mínimo).",
 			"La presentación visual de texto e imágenes de texto tiene una relación de contraste de, al menos, 4.5:1, excepto en los siguientes casos: textos grandes, incidental y logotipos.",
-			NivelAccesibilidad.AA);
+			NivelAccesibilidad.AA,
+			Arrays.asList("2.0","2.1"));
 }
 
 public List<Tecnica> getTecnicasAAgregar() {

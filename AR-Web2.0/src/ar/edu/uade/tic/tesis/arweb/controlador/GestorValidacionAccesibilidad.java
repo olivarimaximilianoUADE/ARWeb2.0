@@ -31,15 +31,15 @@ public class GestorValidacionAccesibilidad implements Runnable {
 		Parseador parseador = null;
 		switch(this.getTipoValidacion().getRepresentacionNumerica()) {
 		case 1:	try {			
-			parseador = new Parseador(new URL(this.getTexto()), NivelAccesibilidad.A);
+			parseador = new Parseador(new URL(this.getTexto()), NivelAccesibilidad.A, "2.0");
 		} catch (MalformedURLException e) {	} 
 		catch (IOException e) { } 
 		break;
 		case 2: try {			
-			parseador = new Parseador(new File(this.getTexto()), NivelAccesibilidad.AA);
+			parseador = new Parseador(new File(this.getTexto()), NivelAccesibilidad.AA, "2.0");
 		} catch (IOException e) {} 
 		break;
-		case 3:	parseador = new Parseador(this.getTexto(), NivelAccesibilidad.AAA);
+		case 3:	parseador = new Parseador(this.getTexto(), NivelAccesibilidad.AAA, "2.0");
 		}
 		List<ResultadoEvaluacionPrincipio> resultadoValidacionGeneral = new LinkedList<ResultadoEvaluacionPrincipio>();
 		for (Principio principio : new WCAG20().getPrincipios())

@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,7 +22,8 @@ public Criterio1_4_9_ImagenesDeTextoSinExcepcion() {
 			"1.4.9",
 			"Imágenes de texto (sin excepciones).",
 			"Las imágenes de texto sólo se utilizan como simple decoración o cuando una forma de presentación particular del texto resulta esencial para la información transmitida.",
-			NivelAccesibilidad.AAA);
+			NivelAccesibilidad.AAA,
+			Arrays.asList("2.0","2.1"));
 }
 
 	public List<Tecnica> getTecnicasAAgregar() {

@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,7 +40,8 @@ public class Criterio1_1_1_ContenidoNoTextual extends Criterio {
 				"1.1.1",
 				"Contenido no textual.",
 				"Todo contenido no textual que se presenta al usuario cuenta con una alternativa textual que sirve para un propósito equivalente.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

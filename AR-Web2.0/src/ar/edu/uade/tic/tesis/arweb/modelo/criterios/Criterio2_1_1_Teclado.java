@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class Criterio2_1_1_Teclado extends Criterio {
 				"2.1.1",
 				"Teclado.",
 				"Toda funcionalidad del contenido es operable a través de una interfaz de teclado sin que exista un límite de tiempo específico para realizar las pulsaciones de las teclas, excepto para cuando la funcionalidad subyacente requiere una interacción del usuario para la que es relevante no sólo los puntos finales de su movimiento sino también la ruta que traza el mismo.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

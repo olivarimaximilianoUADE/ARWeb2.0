@@ -47,28 +47,43 @@
 		<h3>Evaluación de la Accesibilidad Web</h3>
 		<div id="divValidacion">
 			<div class="panel panel-primary">
-		      	<div class="panel-heading">Principios a Verificar</div>
+		      	<div class="panel-heading">Configuración del Análisis</div>
 		      	<div class="panel-body">
-		      		<div class="checkbox">
-		      			<label><input type="checkbox" name="principios" value="1" checked>1. Perceptibilidad</label>
-		      		</div>
-		      		<div class="checkbox">
-		  				<label><input type="checkbox" name="principios" value="2" checked>2. Operabilidad</label>
-		  			</div>
-		  			<div class="checkbox">
-		  				<label><input type="checkbox" name="principios" value="3" checked>3. Comprensiblidad</label>
-		  			</div>
-		  			<div class="checkbox">
-		  				<label><input type="checkbox" name="principios" value="4" checked>4. Robustez</label>
-		  			</div>
-		  			<div id="divDdlNivel" class="form-group">
-		  			<label class="control-label" for="ddlNivel">Seleccione el nivel de accesibilidad a analizar:</label>
-		  				<select id="ddlNivel" class="form-control">
-		  					<option value="0">Seleccionar</option>
-        					<option value="A">Nivel A</option>
-        					<option value="AA">Nivel AA</option>
-        					<option value="AAA">Nivel AAA</option>
-      					</select>
+		      		<div class="row">
+			      		<div class="form-group col-md-6">
+			      			<label class="control-label" for="principios">Principios a Verificar:</label>
+				      		<div class="checkbox">
+				      			<label><input type="checkbox" name="principios" value="1" checked>1. Perceptibilidad</label>
+				      		</div>
+				      		<div class="checkbox">
+				  				<label><input type="checkbox" name="principios" value="2" checked>2. Operabilidad</label>
+				  			</div>
+				  			<div class="checkbox">
+				  				<label><input type="checkbox" name="principios" value="3" checked>3. Comprensiblidad</label>
+				  			</div>
+				  			<div class="checkbox">
+				  				<label><input type="checkbox" name="principios" value="4" checked>4. Robustez</label>
+				  			</div>
+			  			</div>
+			  			<div class="col-md-6">
+				  			<div id="divDdlNivel" class="form-group">
+				  				<label class="control-label" for="ddlNivel">Seleccione el nivel de accesibilidad a analizar:</label>
+				  				<select id="ddlNivel" class="form-control">
+				  					<option value="0">Seleccionar</option>
+		        					<option value="A">Nivel A</option>
+		        					<option value="AA">Nivel AA</option>
+		        					<option value="AAA">Nivel AAA</option>
+		      					</select>
+				  			</div>
+				  			<div id="divDdlVersion" class="form-group">
+				  				<label class="control-label" for="ddlVersion">Seleccione la versión de WCAG a utilizar:</label>
+				  				<select id="ddlVersion" class="form-control">
+				  					<option value="0">Seleccionar</option>
+		        					<option value="2.0">2.0</option>
+		        					<option value="2.1">2.1</option>        					
+		      					</select>
+				  			</div>
+				  		</div>
 		  			</div>
 		      	</div>
 		      </div>

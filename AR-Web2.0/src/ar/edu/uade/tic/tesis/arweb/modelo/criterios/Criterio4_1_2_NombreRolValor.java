@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class Criterio4_1_2_NombreRolValor extends Criterio {
 				"4.1.2",
 				"Nombre, rol, valor.",
 				"Para todo componente de interfaz de usuario (incluidos, pero no limitados a: elementos de formulario, vínculos y componentes generados por medio de scripts), el nombre y el rol pueden ser programablemente determinados, los estados, propiedades y valores que pueden ser establecidos por el usuario pueden ser programablemente establecidos, y los cambios en tales ítems se notifican a los agentes de usuario, incluidas las ayudas técnicas.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

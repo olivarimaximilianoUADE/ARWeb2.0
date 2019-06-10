@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,7 +23,8 @@ public class Criterio2_5_2_CancelacionDelPuntero extends Criterio {
 				"Esencial:\r\n" + 
 				"Completar la función en el evento descendente es esencial.\r\n" + 
 				"Las funciones que emulan un teclado o la pulsación del teclado numérico se consideran esenciales.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

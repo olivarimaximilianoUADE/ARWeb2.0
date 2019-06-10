@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class Criterio1_4_2_ControlAudio extends Criterio {
 				"1.4.2",
 				"Control de audio.",
 				"Si cualquier audio se reproduce automáticamente en una página web durante más de tres segundos, se proporciona ya sea un mecanismo que permita pausar o detener el audio, o un mecanismo que permita controlar el volumen del audio de manera independiente al del resto del sistema.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class Criterio1_4_1_UsoColor extends Criterio {
 				"1.4.1",
 				"Uso del color.",
 				"El color no se emplea como el único medio visual para transmitir una información, indicar una acción, provocar una respuesta o distinguir visualmente un elemento.",
-				NivelAccesibilidad.A);
+				NivelAccesibilidad.A,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {

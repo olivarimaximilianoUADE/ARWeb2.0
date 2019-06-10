@@ -1,5 +1,6 @@
 package ar.edu.uade.tic.tesis.arweb.modelo.criterios;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +16,8 @@ public class Criterio2_4_6_EncabezadosYEtiquetas extends Criterio {
 				"2.4.6",
 				"Encabezados y etiquetas.",
 				"Los encabezados y etiquetas describen el tema o propósito.",
-				NivelAccesibilidad.AA);
+				NivelAccesibilidad.AA,
+				Arrays.asList("2.0","2.1"));
 	}
 
 	public List<Tecnica> getTecnicasAAgregar() {
