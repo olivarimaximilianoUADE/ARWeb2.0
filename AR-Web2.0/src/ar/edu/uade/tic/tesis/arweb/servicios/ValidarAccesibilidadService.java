@@ -443,7 +443,7 @@ public class ValidarAccesibilidadService{
 		det.setCantProblemas(cantidadError);
 		det.setCantAdvertencias(cantidadManual);
 		det.setCantNoVerificados(cantidadImposible);
-		if(validacion.getVersionWCAG() == "2.1")
+		if(validacion.getVersionWCAG().equals("2.1"))
 			det.setPuntos((int)(cantidadOKNivelA * 3.3333));//properties.get("PUNTAJE_UMBRAL"));
 		else
 			det.setPuntos((int)(cantidadOKNivelA * 4));
