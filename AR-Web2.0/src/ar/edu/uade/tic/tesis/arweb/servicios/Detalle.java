@@ -3,6 +3,7 @@ package ar.edu.uade.tic.tesis.arweb.servicios;
 public class Detalle {
 	public String recurso;
 	public String fechaHora;
+	public String pautas;
 	public String principios;
 	public int cantProblemas;
 	public int cantAdvertencias;
@@ -20,6 +21,12 @@ public class Detalle {
 	}
 	public void setFechaHora(String fechaHora) {
 		this.fechaHora = fechaHora;
+	}
+	public String getPautas() {
+		return pautas;
+	}
+	public void setPautas(String pautas) {
+		this.pautas = pautas;
 	}
 	public String getPrincipios() {
 		return principios;

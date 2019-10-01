@@ -439,6 +439,10 @@ public class ValidarAccesibilidadService{
 		det.setRecurso(validacion.getUrl());
 		det.setPrincipios(validacion.getPrincipios());
 		det.setFechaHora(new SimpleDateFormat().format(new Date()));
+		if(validacion.getVersionWCAG().equals("2.1"))
+			det.setPautas("WCAG 2.1");
+		else
+			det.setPautas("WCAG 2.0");
 		
 		det.setCantProblemas(cantidadError);
 		det.setCantAdvertencias(cantidadManual);
@@ -456,7 +460,7 @@ public class ValidarAccesibilidadService{
 		hist.setId(analisisDAO.getPrincipios() == "" ? 0 : analisisDAO.getId());
 		hist.setRecurso(analisisDAO.getPrincipios() == "" ? "---" : analisisDAO.getUrl());
 		hist.setFechaHora(analisisDAO.getPrincipios() == "" ? "---" : analisisDAO.getFechaHora());
-		hist.setPautas(analisisDAO.getPrincipios() == "" ? "---" : "WCAG 2.0");
+		hist.setPautas("WCAG " + analisisDAO.getVersion());
 		hist.setPrincipios(analisisDAO.getPrincipios() == "" ? "---" : analisisDAO.getPrincipios());
 		hist.setNivelAccesibilidad(analisisDAO.getPrincipios() == "" ? "---" : analisisDAO.getNivelAccesibilidad());// + " " + "(umbral: " + analisisDAO.getUmbralString() + " puntos)");
 		hist.setTecnologias(analisisDAO.getPrincipios() == "" ? "---" : "HTML, CSS y JavaScript");
@@ -476,7 +480,7 @@ public class ValidarAccesibilidadService{
 				Integer.parseInt(properties.get("PUNTAJE_UMBRAL").toString()),
 				resul.getDetalle().getCantProblemas(),
 				resul.getDetalle().getCantAdvertencias(),
-				resul.getDetalle().getCantNoVerificados(), resul.getDetalle().getPuntos()));
+				resul.getDetalle().getCantNoVerificados(), resul.getDetalle().getPuntos(), validacion.getVersionWCAG()));
 		
 		//Guardo el detalle del analisis
 		String criterio= "", nivel = "", tecnica = "", script = "";

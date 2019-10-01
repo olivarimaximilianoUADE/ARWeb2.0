@@ -18,6 +18,7 @@ public class AnalisisDAO extends Analisis implements DAO {
 	private static String advertenciasSQL = "";
 	private static String noVerificadosSQL = "";
 	private static String accesibilidadSQL = "";
+	private static String versionSQL = "";
 
 	private void registrar() {
 		AnalisisDAO.tablaSQL = "HISTORICO_ANALISIS";
@@ -32,10 +33,11 @@ public class AnalisisDAO extends Analisis implements DAO {
 		AnalisisDAO.advertenciasSQL = AnalisisDAO.prefSQL + "Advertencias";
 		AnalisisDAO.noVerificadosSQL = AnalisisDAO.prefSQL + "NoVerificados";
 		AnalisisDAO.accesibilidadSQL = AnalisisDAO.prefSQL + "Accesibilidad";
+		AnalisisDAO.versionSQL = AnalisisDAO.prefSQL + "Version";
 		AnalisisDAO.camposSQL = AnalisisDAO.idSQL + " , " + AnalisisDAO.urlSQL + " , " + AnalisisDAO.fechaSQL + " , "
 				+ AnalisisDAO.principiosSQL + " , " + AnalisisDAO.nivelSQL + " , " + AnalisisDAO.umbralSQL + " , "
 				+ AnalisisDAO.problemasSQL + " , " + AnalisisDAO.advertenciasSQL + " , " + AnalisisDAO.noVerificadosSQL
-				+ " , " + AnalisisDAO.accesibilidadSQL;
+				+ " , " + AnalisisDAO.accesibilidadSQL + " , " + AnalisisDAO.versionSQL;
 	}
 
 	public AnalisisDAO() {
@@ -49,8 +51,8 @@ public class AnalisisDAO extends Analisis implements DAO {
 	}
 
 	public AnalisisDAO(String url, String principios, String nivelAccesibilidad, Integer umbral, Integer problemas,
-			Integer advertencias, Integer noVerificados, Integer accesibilidad) {
-		super(0L, url, principios, nivelAccesibilidad, umbral, problemas, advertencias, noVerificados, accesibilidad);
+			Integer advertencias, Integer noVerificados, Integer accesibilidad, String version) {
+		super(0L, url, principios, nivelAccesibilidad, umbral, problemas, advertencias, noVerificados, accesibilidad, version);
 		this.registrar();
 	}
 
@@ -65,6 +67,7 @@ public class AnalisisDAO extends Analisis implements DAO {
 		analisis.setAdvertencias(resultSet.getInt(8));
 		analisis.setNoVerificados(resultSet.getInt(9));
 		analisis.setAccesibilidad(resultSet.getInt(10));
+		analisis.setVersion(resultSet.getString(11));
 	}
 
 	public void select() throws Exception {
@@ -102,7 +105,7 @@ public class AnalisisDAO extends Analisis implements DAO {
 							"'" + this.getUrl() + "' , '" + this.getFechaHora() + "' , '"
 									+ this.getPrincipios() + "' , '" + this.getNivelAccesibilidad() + "' , "
 									+ this.getUmbral() + " , " + this.getProblemas() + " , " + this.getAdvertencias()
-									+ " , " + this.getNoVerificados() + " , " + this.getAccesibilidad())));
+									+ " , " + this.getNoVerificados() + " , " + this.getAccesibilidad() + " , '" + this.getVersion() + "'")));
 			db.commit();
 		} catch (Exception e) {
 			throw e;

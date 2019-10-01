@@ -9,6 +9,7 @@ public class Analisis {
 	private String url;
 	private String fechaHora;
 	private String principios;
+	private String version;
 	private String nivelAccesibilidad;
 	private Integer umbral;
 	private Integer problemas;
@@ -17,15 +18,15 @@ public class Analisis {
 	private Integer accesibilidad;
 
 	public Analisis() {
-		this(0L, "", "", "", -1, -1, -1, -1, -1);
+		this(0L, "", "", "", -1, -1, -1, -1, -1, "");
 		this.setFechaHora("");
 	}
 
 	public Analisis(String url) {
-		this(0L, url, "", "", -1, -1, -1, -1, -1);
+		this(0L, url, "", "", -1, -1, -1, -1, -1, "");
 	}
 
-	public Analisis(Long id, String url, String principios, String nivelAccesibilidad, Integer umbral, Integer problemas, Integer advertencias, Integer noVerificado, Integer accesibilidad) {
+	public Analisis(Long id, String url, String principios, String nivelAccesibilidad, Integer umbral, Integer problemas, Integer advertencias, Integer noVerificado, Integer accesibilidad, String version) {
 		this.setId(id);
 		this.setUrl(url);
 		this.setFechaHora(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
@@ -36,6 +37,7 @@ public class Analisis {
 		this.setAdvertencias(advertencias);
 		this.setNoVerificados(noVerificado);
 		this.setAccesibilidad(accesibilidad);
+		this.setVersion(version);
 	}
 
 	public Long getId() {
@@ -60,6 +62,14 @@ public class Analisis {
 
 	public void setFechaHora(String fechaHora) {
 		this.fechaHora = fechaHora;
+	}
+	
+	public String getVersion() {
+		return this.version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
 	}
 
 	public String getPrincipios() {

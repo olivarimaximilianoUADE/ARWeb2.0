@@ -8,11 +8,11 @@ public class GestorBaseDatos {
 
 	public static ControlInformacion insertar(TipoValidacion tipoValidacion, String recurso, String principios,
 			String nivelAccesibilidad, Integer umbral, Integer problemas, Integer advertencias, Integer noVerificados,
-			Integer accesibilidad) {
+			Integer accesibilidad, String version) {
 		if (tipoValidacion == TipoValidacion.PAGINA_WEB || tipoValidacion == TipoValidacion.ARCHIVO) {
 			try {
 				new AnalisisDAO(recurso, principios, nivelAccesibilidad, umbral, problemas, advertencias, noVerificados,
-						accesibilidad).insertHistorico();
+						accesibilidad, version).insertHistorico();
 			} catch (Exception e) {
 				return new ControlInformacion(ControlInformacion.ERROR,
 						"Error en la conexión con la base de datos o inserción del recurso.", "", e);
@@ -23,10 +23,10 @@ public class GestorBaseDatos {
 
 	public static Long insertarHistorico(TipoValidacion tipoValidacion, String recurso, String principios,
 			String nivelAccesibilidad, Integer umbral, Integer problemas, Integer advertencias, Integer noVerificados,
-			Integer accesibilidad) throws Exception {
+			Integer accesibilidad, String version) throws Exception {
 		if (tipoValidacion == TipoValidacion.PAGINA_WEB || tipoValidacion == TipoValidacion.ARCHIVO) {
 			AnalisisDAO analisisDAO = new AnalisisDAO(recurso, principios, nivelAccesibilidad, umbral, problemas,
-					advertencias, noVerificados, accesibilidad);
+					advertencias, noVerificados, accesibilidad, version);
 			analisisDAO.insertHistorico();
 			return analisisDAO.getId();
 		}

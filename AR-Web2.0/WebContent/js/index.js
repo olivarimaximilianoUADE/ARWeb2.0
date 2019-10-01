@@ -334,6 +334,7 @@ function setResults() {
 	// Detalle
 	$('[id$="divRecurso"]')[0].innerHTML = data.detalle.recurso;
 	$('[id$="divFechaHora"]')[0].innerHTML = data.detalle.fechaHora;
+	$('[id$="divPautas"]')[0].innerHTML = data.detalle.pautas;
 	$('[id$="divPrincipios"]')[0].innerHTML = data.detalle.principios;
 	$('[id$="divNivelAccesibilidad"]')[0].innerHTML = $('[id$="ddlNivel"]').val();
 	$('[id$="divCantProblemas"]')[0].innerHTML = data.detalle.cantProblemas;
